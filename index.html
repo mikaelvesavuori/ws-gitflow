@@ -1,15 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 	<head>
 		<meta charset="utf-8">
 		<title>GitFlow Workshop</title>
 	</head>
+	<link rel="stylesheet" href="normalize.css">
+	<link rel="stylesheet" href="main.css">
 
 	<body>
-		<h1>GitFlow Workshop</h1>
+		<div class="wrapper">
+			<article>
+				<section>
+					<h1>GitFlow Workshop</h1>
+					<p>
+						Workshop on how to use Git (more specifically a GitFlow process) including how to do things like feature branching.
+					</p>
+				</section>
 
-		<p>
-			Workshop on how to use Git (more specifically a GitFlow process) including how to do things like feature branching.
-		</p>
+				<section>
+					<h2><i>Some things to remember</i></h2>
+					<p>
+						Essentially Git is a logging system to determine where and in which context changes (and what these changes are) have taken place. A core concept in Git is the concept of <b>branches</b>. When working on a larger project it makes sense to isolate any work you are doing from the work of others until your work is ready for review and subsequent integration into the overall, "master" copy of the project. You achieve this isolation by working in a separate branch of the project.
+					</p>
+
+					<p>
+						Because Git tracks changes in files, rather than <i>actual</i> files, you don't usually need multiple sets of the project files. However, what you need to do is make sure you work in the correct branch, so changes don't carry over straight away into another branch, like the develop or master branch.
+					</p>
+
+					<p>
+						On a personal, small-scale or fairly uncomplicated project you might not have the need to run separate branches. The case then is usually just simply to <i>push to master</i>. You will likely have some experience with the basics of Git, like adding, committing, merging and pushing. This workshop will therefore focus on training us in the use of the well-established GitFlow model. Successful use of the GitFlow model will allow us to keep better track of our own changes, and ultimately provide a safer workflow for the collective master branch which will henceforth only receive reviewed code.
+					</p>
+				</section>
+
+				<section>
+					<h2>Work only with a "develop" branch</h2>
+					<p>
+						You can list the current branches in the project with "git branch".
+					</p>
+
+					<p>
+						Switch to the development branch by running "git checkout develop". You should now be on that specific branch, meaning all edits will be done only to
+					</p>
+				</section>
+
+				<section>
+					<h2>Adding a new branch called "feature1"</h2>
+					<p>
+						Adding it by entering "git branch feature1" into the CLI, and then switching to it with "git checkout feature1".
+					</p>
+
+					<p>
+						Switching to the master branch and listing changes with "git status" reveals that the master branch has no registered changes – all in good order!
+					</p>
+				</section>
+			</article>
+		</div>
 	</body>
 </html>
