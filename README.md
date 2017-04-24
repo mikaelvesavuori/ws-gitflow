@@ -1,2 +1,2 @@
 # ws-gitflow
-Workshop on how to use Git (more specifically a GitFlow process) including how to do things like feature branching.
+Workshop on how to use Git for feature branching and running a project according to the [GitFlow]("http://nvie.com/posts/a-successful-git-branching-model/")</a> process.

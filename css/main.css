@@ -1,0 +1,99 @@
+/* Basics */
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+	font-size: 1.5rem;
+	line-height: 1.4;
+}
+
+img {
+	width: 100%;
+}
+
+
+
+/* Layout */
+header {
+	margin-bottom: 6rem;
+}
+
+.wrapper {
+	margin: 0 auto;
+	max-width: 700px;
+}
+
+section {
+	background-color: #d6ecf7;
+	border-radius: 15px;
+	padding: 3rem;
+	margin-bottom: 3rem;
+}
+
+ul {
+	list-style: none;
+	padding-left: 0;
+}
+
+ul:not(.ul--inline) {
+	border-top: 1px solid #000;
+	margin-top: 2rem;
+	padding-top: 2rem;
+}
+
+li:before {
+	content: "– ";
+}
+
+li {
+	margin-bottom: 1rem;
+}
+
+
+
+/* Typography */
+h2, h3 {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+.number {
+	color: white;
+	background-color: black;
+	padding: 1.25rem;
+	border-radius: 100% 15%;
+	line-height: 2;
+}
+
+section > h2 {
+	margin-top: 0;
+}
+
+h2 > i {
+	color: red;
+}
+
+h2 + h3 {
+	color: #444;
+	margin-top: .5rem;
+}
+
+p + h3 {
+	margin-top: 3rem;
+}
+
+code {
+	background-color: #FFF;
+	padding: .25rem;
+}
+
+
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+	.wrapper {
+		padding: 0 2rem;
+	}
+
+	section {
+		padding: 1.5rem;
+	}
+}
