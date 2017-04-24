@@ -10,12 +10,10 @@
 	<body>
 		<div class="wrapper">
 			<article>
-				<section>
-					<h1>GitFlow Workshop</h1>
-					<p>
-						Workshop on how to use Git (more specifically a GitFlow process) including how to do things like feature branching.
-					</p>
-				</section>
+				<h1>GitFlow Workshop</h1>
+				<p>
+					Workshop on how to use Git (more specifically a <a href="http://nvie.com/posts/a-successful-git-branching-model/">GitFlow</a> process) including how to do things like feature branching.
+				</p>
 
 				<section>
 					<h2><i>Some things to remember</i></h2>
@@ -30,6 +28,14 @@
 					<p>
 						On a personal, small-scale or fairly uncomplicated project you might not have the need to run separate branches. The case then is usually just simply to <i>push to master</i>. You will likely have some experience with the basics of Git, like adding, committing, merging and pushing. This workshop will therefore focus on training us in the use of the well-established GitFlow model. Successful use of the GitFlow model will allow us to keep better track of our own changes, and ultimately provide a safer workflow for the collective master branch which will henceforth only receive reviewed code.
 					</p>
+
+					<aside>
+						<h3>Pre-reading</h3>
+						<ul>
+							<li><a href="https://www.atlassian.com/git/tutorials/using-branches">Atlassian: Using Branches</a></li>
+							<li><a href="https://www.atlassian.com/git/tutorials/comparing-workflows#gitflow-workflow">Atlassian: Comparing Workflows – Gitflow Workflow</a></li>
+						</ul>
+					</aside>
 				</section>
 
 				<section>
@@ -45,18 +51,88 @@
 
 					<h2>Work only with a "develop" branch</h2>
 					<p>
-						You can list the current branches in the project with "git branch".
+						You can list the current branches in the project with <code>git branch</code>.
 					</p>
 
 					<p>
-						Switch to the development branch by running "git checkout develop". You should now be on that specific branch, meaning all edits will be done only to
+						Switch to the development branch by running <code>git checkout develop</code>. You should now be on that specific branch, meaning all edits will be done only to that branch.
 					</p>
 				</section>
 
 				<section>
 					<h2>Adding a new branch called "feature1"</h2>
 					<p>
-						Adding it by entering "git branch feature1" into the CLI, and then switching to it with "git checkout feature1".
+						Adding it by entering <code>git branch feature1</code> into the CLI, and then switching to it with <code>git checkout feature1</code>.
+					</p>
+
+					<p>
+						Switching to the master branch and listing changes with <code>git status</code> reveals that the master branch has no registered changes – all in good order!
+					</p>
+				</section>
+
+				<section>
+					<h2>Create pull request (Bitbucket or other GUI)</h2>
+					<h3>Bitbucket or other GUI</h3>
+					<p>
+						The <i>pull request</i> is used as a way to communicate that changes have taken place and that you wish these to be reviewed and added to the main branch (develop or master).
+					</p>
+
+					<p>
+						A pull request should always contain a pertinent, meaningful description. In Bitbucket there is a choice to "Close branch" after the pull request is merged. Click "Create pull request".
+					</p>
+
+					<aside>
+						<ul>
+							<li>GitHub: <a href="https://help.github.com/articles/creating-a-pull-request/">GitHub: Creating a pull request</a></li>
+							<li>Bitbucket: <a href="https://www.atlassian.com/git/tutorials/making-a-pull-request">Atlassian: Making a Pull Request</a></li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Merging branches</h2>
+					<h3>Bitbucket or other GUI</h3>
+					<p>
+						The pull request is done in Bitbucket or another GUI. In Bitbucket you will find "Pull requests" on the left-hand side panel, under the "Navigation" heading.
+					</p>
+
+					<p>
+						Valid users can "Approve" and "Unapprove" a pull request. The actual merge takes place when the "Merge" button is clicked. Make sure that "Source" and "Destination" are correct.
+					</p>
+
+					<h3>NOTE!</h3>
+					<p>
+						In Bitbucket there is a choice to "Close source branch" in the "Merge pull request" panel. This eliminates the below step of erasing the remote (Bitbucket) repository.
+					</p>
+				</section>
+
+				<section>
+					<h2>Delete local branch</h2>
+					<p>
+						Adding it by entering <code>git branch feature1</code> into the CLI, and then switching to it with <code>git checkout feature1</code>.
+
+						<code>
+							git branch -d branch_name
+						</code>
+					</p>
+
+					<p>
+						Switching to the master branch and listing changes with <code>git status</code> reveals that the master branch has no registered changes – all in good order!
+					</p>
+				</section>
+
+				<section>
+					<h2>Delete remote branch</h2>
+					<p>
+						Adding it by entering <code>git branch feature1</code> into the CLI, and then switching to it with <code>git checkout feature1</code>.
+
+						<code>
+							git push origin --delete branch_name
+						</code>
+					</p>
+
+					<p>
+						In Bitbucket a branch (sorted by "active" or "merged") can be deleted by going to "Branches" under the "Navigation" panel. To the far right a "..." symbol can be clicked. If you have merged your changes, make sure to get rid of old branches. To do so, click "Delete branch" in the "..." panel.
 					</p>
 
 					<p>
