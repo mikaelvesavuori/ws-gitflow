@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<title>GitFlow Workshop</title>
 	</head>
-	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+	<link rel="preload" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" as="font" type="font/woff2" crossorigin>
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/main.css">
 
@@ -27,7 +27,7 @@
 					<img src="img/meme.jpg">
 
 					<p>
-						This workshop will focus on training us in the use of the well-established GitFlow model. Successful use of this model will allow us to keep better track of our own changes, and ultimately provide a safer workflow for the collective master branch which will henceforth only receive reviewed code. GitFlow offers some additional structure to the more general so-called <b>feature branch workflow</b>, but all in all they work pretty much the same way. The main difference could be stated that, <u>in the GitFlow process, branches are also created for releases and hotfixes</u> (and potentially other classes of important branches) beyond just the master and develop branches.
+						This workshop will focus on training us in the use of the well-established GitFlow model. Successful use of this model will allow us to keep better track of our own changes, and ultimately provide a safer workflow for the collective master branch which will henceforth only receive reviewed code. GitFlow offers some additional structure to the more general so-called <b>feature branch workflow</b>, but all in all they work pretty much the same way. The main difference could be stated that, <u>in the GitFlow process, branches are also used for releases and hotfixes</u> (and potentially other classes of important branches) beyond just the <code>master</code> and <code>develop</code> branches.
 					</p>
 
 					<p>
@@ -47,8 +47,14 @@
 					</aside>
 				</section>
 
-				<h1>Preparations</h1>
-				<h2>What to do before starting</h2>
+				<div class="task">
+					<div class="task__contents">
+						<div class="task__inner">
+							<h1>Preparations</h1>
+							<h2>What to do before starting</h2>
+						</div>
+					</div>
+				</div>
 
 				<section>
 					<h2>Prerequisites</h2>
@@ -61,7 +67,7 @@
 							<li>You should have a working understanding of how Git operates</li>
 							<li>You have sufficient practical skills to run basic Git tasks such as add (stage), commit, merge, pull, fetch and push to a remote Git repository</li>
 							<li>You have cloned <a href="https://github.com/mikaelvesavuori/ws-gitflow" target="_blank" rel="noopener noreferrer">this workshop's repository</a> to your computer and have local access to all of its files</li>
-							<li>You have set the repository up with either a <a href="https://git-scm.com/book/it/v2/Git-Basics-Getting-a-Git-Repository" target="_blank" rel="noopener noreferrer">command line interface (CLI) with Git access</a>, <a href="https://confluence.atlassian.com/bitbucket/clone-a-repository-223217891.html" target="_blank" rel="noopener noreferrer">Bitbucket</a>, <a href="https://help.github.com/articles/cloning-a-repository/" target="_blank" rel="noopener noreferrer">Github</a>, or <a href="https://www.visualstudio.com/en-us/docs/git/gitquickstart" target="_blank" rel="noopener noreferrer">Visual Studio 2015 (or later) with a Team Services account</a></li>
+							<li>You have set the above repository up to your own remote repository, with either a <a href="https://git-scm.com/book/it/v2/Git-Basics-Getting-a-Git-Repository" target="_blank" rel="noopener noreferrer">command line interface (CLI) with Git access</a>, <a href="https://confluence.atlassian.com/bitbucket/clone-a-repository-223217891.html" target="_blank" rel="noopener noreferrer">Bitbucket</a>, <a href="https://help.github.com/articles/cloning-a-repository/" target="_blank" rel="noopener noreferrer">Github</a>, or <a href="https://www.visualstudio.com/en-us/docs/git/tutorial/clone" target="_blank" rel="noopener noreferrer">Visual Studio 2015 (or later) with a Team Services account</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -69,7 +75,11 @@
 				<section>
 					<h2>Overview of commands</h2>
 					<p>
-						Much of what is going to happen in this workshop will be familiar to you. Below I've provided a list of the general commands and steps you will learn.
+						Much of what is going to happen in this workshop will be familiar to you on some level. Below I've outlined the general CLI commands and steps you will learn in order to proficiently work with branches.
+					</p>
+
+					<p>
+						If not using a CLI, any kind of Git GUI tool will have interactions corresponding to these commands.
 					</p>
 
 					<div class="inform">
@@ -82,7 +92,8 @@
 					<aside>
 						<ul>
 							<li><code>$ git branch [some-branch]</code>Creates a new branch with the specified name</li>
-							<li><code>$ git branch -d [some-branch]</code>Deletes the branch with the specified name</li>
+							<li><code>$ git branch -d [some-branch]</code>Deletes the (local) branch with the specified name</li>
+							<li><code>$ git push origin --delete [some-branch]</code>Deletes the (remote) branch with the specified name</li>
 							<li><code>$ git checkout [some-branch]</code>Switches to the branch with the specified name</li>
 							<li><code>$ git checkout -b [newbranch] [oldbranch]</code><u>Creates a new branch</u> with the specified name (if it doesn't already exist) <u>from a previous branch</u> and <u>switches to the new branch</u><br>
 								<b>Example usage</b>: <code>$ git checkout -b myfeature develop</code></li>
@@ -95,7 +106,7 @@
 				<section>
 					<h2>Structure of branches</h2>
 					<p>
-						text goes here
+						The following is how we will use branching in this workshop, which also corresponds to the overall GitFlow workflow.
 					</p>
 
 					<aside>
@@ -109,17 +120,23 @@
 					</aside>
 				</section>
 
-				<h1>Task 1</h1>
-				<h2>Feature branch to fix styling</h2>
+				<div class="task">
+					<div class="task__contents">
+						<div class="task__inner">
+							<h1><a name="task1">Task 1</a></h1>
+							<h2>Feature branch to fix styling</h2>
+						</div>
+					</div>
+				</div>
 
 				<section>
 					<h2><span>1.</span> Add a new feature branch</h2>
 					<p>
-						Only push to the "develop" branch and your own feature branch! You can list the current branches in the project with <code>$ git branch</code>.
+						Only push to the "develop" branch and your own feature branch! You can list the current branches in the project with <code>$ git status</code>.
 					</p>
 
 					<p>
-						Switch to the development branch by running <code>$ git checkout develop</code>. You should now be on that specific branch, meaning all edits will be done only to that branch.
+						Switch to the development branch by running <code>$ git checkout develop</code>. You should now be on that specific branch, meaning all edits will be done only to that branch. You can see the current branch by entering <code>$ git status</code>.
 					</p>
 
 					<h3>CLI</h3>
@@ -143,8 +160,14 @@
 					</p>
 				</section>
 
-				<h1>Task 2</h1>
-				<h2>Pull requests and clean-up</h2>
+				<div class="task">
+					<div class="task__contents">
+						<div class="task__inner">
+							<h1><a name="task2">Task 2</a></h1>
+							<h2>Pull requests and clean-up</h2>
+						</div>
+					</div>
+				</div>
 
 				<section>
 					<h2><span>1.</span> Create pull request</h2>
@@ -279,8 +302,14 @@
 					</p>
 				</section>
 
-				<h1>Task 3</h1>
-				<h2>Hotfix branch for corrections</h2>
+				<div class="task">
+					<div class="task__contents">
+						<div class="task__inner">
+							<h1><a name="task3">Task 3</a></h1>
+							<h2>Hotfix branch for corrections</h2>
+						</div>
+					</div>
+				</div>
 
 				<section>
 					<h2><span>1.</span> Add a new hotfix branch</h2>
@@ -316,7 +345,7 @@
 				<section>
 					<h2><span>2.</span> Description</h2>
 					<p>
-						Finally, don't push to master. Push the updates to [xxxx] and do a pull request to further familiarize yourself with the workflow. Accept and integrate into master, and then cleanup the old branch.
+						Finally, follow the general instructions in <a href="#task2">Task 2</a>: Don't push to <code>master</code>; instead push the updates to <code>branch</code> and do a pull request to further familiarize yourself with this workflow. Accept and integrate into <code>master</code>, and then cleanup the old branch.
 					</p>
 
 					<h3>CLI</h3>
@@ -340,13 +369,19 @@
 					</p>
 				</section>
 
-				<h1>Task 4</h1>
-				<h2>Release branch for final version</h2>
+				<div class="task">
+					<div class="task__contents">
+						<div class="task__inner">
+							<h1><a name="task4">Task 4</a></h1>
+							<h2>Release branch for final version</h2>
+						</div>
+					</div>
+				</div>
 
 				<section>
 					<h2><span>1.</span> Description</h2>
 					<p>
-						Finally, don't push to master. Push the updates to [xxxx] and do a pull request to further familiarize yourself with the workflow. Accept and integrate into master, and then cleanup the old branch.
+						Finally, follow the general instructions in <a href="#task2">Task 2</a>: Don't push to <code>master</code>; instead push the updates to <code>branch</code> and do a pull request to further familiarize yourself with this workflow. Accept and integrate into <code>master</code>, and then cleanup the old branch.
 					</p>
 
 					<h3>CLI</h3>

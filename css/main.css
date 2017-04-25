@@ -1,4 +1,9 @@
 /* Basics */
+::selection {
+	background-color: #000;
+	color: #fff;
+}
+
 body {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 	font-size: 1.25rem;
@@ -62,6 +67,24 @@ li > code:first-child {
 	display: inline-block;
 }
 
+.task {
+	background-color: #14d26e;
+	border-radius: 100%;
+	margin: 0 auto;
+	margin-bottom: 3rem;
+	width: 30em;
+	height: 30em;
+}
+
+.task__contents {
+	color: white;
+	display: flex;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+}
+
 .inform {
 	padding: 1rem;
 	background-color: #ffd200;
@@ -80,7 +103,6 @@ li > code:first-child {
 .inform > h3, .warn > h3 {
 	margin-top: 0;
 }
-
 
 
 /* Typography */
@@ -124,19 +146,25 @@ p + h3, aside {
 
 code {
 	font-family: "Inconsolata", monospace;
+	font-display: swap;
 	background-color: #d6ecf7;
 	border-radius: 3px;
 	padding: .1rem .25rem;
 }
 
-a {
+a:hover {
+	color: #7e54d1;
+	transition: .25s;
+}
+
+a:not("h1") {
 	color: #00acf0;
 	transition: .15s;
 }
 
-a:hover {
-	color: #7e54d1;
-	transition: .25s;
+h1 a:hover {
+	color: inherit;
+	transition: none;
 }
 
 u {
