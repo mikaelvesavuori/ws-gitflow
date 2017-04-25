@@ -8,9 +8,9 @@ In our workshop we will correct the below text into forming the two first paragr
 ---
 
 ## How we will use branches
-- *Feature*: Add small heading for chapter and separate paragraphs with line break
-- *Hotfix*: Correct name and correct creature type
-- *Release*: Final version with styling changes and correct name
+- **Feature**: Add small heading for chapter and separate paragraphs with line break
+- **Hotfix**: Correct name and correct creature type
+- **Release**: Final version with styling changes and correct name
 
 ---
 
