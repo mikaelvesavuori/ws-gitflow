@@ -1,11 +1,15 @@
 # ws-gitflow
 Workshop on how to use Git for feature branching and running a project according to the [GitFlow](http://nvie.com/posts/a-successful-git-branching-model/) process.
 
-Because Git works so well with text/code and we don't want any unnecessary complexity, we will use this readme.md as our base work document to learn the secrets of feature branching and GitFlow!
+## What we will make
+Because Git works so well with text/code and we don't want any unnecessary complexity, we will use this readme.md as our base work document to learn the secrets of feature branching and GitFlow! In our workshop we will correct the below text into forming the two first paragraphs from Franz Kafka's [The Metamorphosis](https://en.wikipedia.org/wiki/The_Metamorphosis), originally published in 1915.
 
-In our workshop we will correct the below text into forming the two first paragraphs from Franz Kafka's [The Metamorphosis](https://en.wikipedia.org/wiki/The_Metamorphosis), originally published in 1915.
+This way it will be really easy for you to see the changes you've made, since readme.md is usually displayed front-and-center in a Git repository regardless of the exact GUI you are using.
 
-## How we will use branches
+## Workshop instructions
+The workshop material is contained in index.html. Just follow along to the instructions there.
+
+## How we will use branches in this workshop
 - **Feature**: Add small heading for chapter and separate paragraphs with line break
 - **Hotfix**: Correct name and correct creature type
 - **Release**: Final version with styling changes and correct name
