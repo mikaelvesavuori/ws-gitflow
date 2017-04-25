@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<title>GitFlow Workshop</title>
 	</head>
+	<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/main.css">
 
@@ -26,15 +27,15 @@
 					<img src="img/meme.jpg">
 
 					<p>
-						This workshop will focus on training us in the use of the well-established GitFlow model. Successful use of the GitFlow model will allow us to keep better track of our own changes, and ultimately provide a safer workflow for the collective master branch which will henceforth only receive reviewed code. GitFlow offers some additional structure to the more general "Feature Branch Workflow", but all in all they work pretty much the same way.
+						This workshop will focus on training us in the use of the well-established GitFlow model. Successful use of the GitFlow model will allow us to keep better track of our own changes, and ultimately provide a safer workflow for the collective master branch which will henceforth only receive reviewed code. GitFlow offers some additional structure to the more general "Feature Branch Workflow", but all in all they work pretty much the same way. The main difference could be stated that, in the GitFlow process, branches are also created for releases and hotfixes (and potentially other classes of important branches) beyond just the master and develop branches.
 					</p>
 
 					<p>
-						Remember that Git is essentially just a logging system to determine where and in which context changes (and what these changes are) have taken place. When working on a larger project it makes sense to isolate any work you are doing from the work of others until your work is ready for review and subsequent integration into the overall, "master" copy of the project. You achieve this isolation by working in a separate branch of the project.
+						Remember that Git is essentially just a logging system to determine where, what and in which context changes have taken place. When working on a larger project it makes sense to isolate any work you are doing from the work of others until your work is ready for review and subsequent integration into the overall, "master" copy of the project. The most common way of achieving this isolation is by working in a separate branch of the project.
 					</p>
 
 					<p>
-						Because Git tracks changes in files, rather than <i>actual</i> files, you don't usually need multiple sets of the project files. However, what you need to do is make sure you work in the correct branch, so changes don't carry over straight away into another branch, like the develop or master branch.
+						Because Git tracks changes in files, rather than <i>actual</i> files, <u>you don't (usually) need multiple sets of the project files</u>. However, what you need to do is make sure you work in the correct branch, so changes don't carry over straight away into another branch, like the develop or master branch.
 					</p>
 
 					<h3>Prerequisites</h3>
@@ -52,17 +53,33 @@
 				</section>
 
 				<section>
-					<h2>Overview of commands</h2>
+					<h3>Setup</h3>
 					<p>
-						text goes here
+						This workshop assumes that the following criteria is met.
 					</p>
 
 					<aside>
 						<ul>
-							<li><code>git branch [some-branch]</code>: Creates a new branch with the name you supply</li>
-							<li><code>git branch -d [some-branch]</code>: Deletes the branch with the name you supply</li>
-							<li><code>git checkout [some-branch]</code>: Switches to the branch with the name you supply</li>
-							<li><code>git checkout -b [newbranch] [oldbranch]</code>: Creates a new branch (if it doesn't exist) from a previous branch and switches to the new branch (example usage: "git checkout -b myfeature develop")</li>
+							<li>Use a command line interface with Git access; GitHub; Bitbucket; or Visual Studio 2015 (or later) with a Team Services account</li>
+							<li>Clone this repository to your computer</li>
+							<li>asdf</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Overview of commands</h2>
+					<p>
+						Much of what is going to happen in this workshop will be familiar to you. Below I've provided a list of the general commands and steps you will learn.
+					</p>
+
+					<aside>
+						<ul>
+							<li><code>git branch [some-branch]</code>Creates a new branch with the specified name</li>
+							<li><code>git branch -d [some-branch]</code>Deletes the branch with the specified name</li>
+							<li><code>git checkout [some-branch]</code>Switches to the branch with the specified name</li>
+							<li><code>git checkout -b [newbranch] [oldbranch]</code>Creates a new branch with the specified name (if it doesn't already exist) from a previous branch and switches to the new branch (example usage: "git checkout -b myfeature develop")</li>
+							<li><code>git merge [mergefrom]</code>Merge the specified branch onto the current branch (example usage: "git merge develop")</li>
 						</ul>
 					</aside>
 				</section>
@@ -91,7 +108,7 @@
 				</section>
 
 				<section>
-					<h2><span class="number">1.</span> Add a new branch</h2>
+					<h2><span class="number">1.</span> Add a new feature branch</h2>
 					<p>
 						Only push to the "develop" branch and your own feature branch! You can list the current branches in the project with <code>git branch</code>.
 					</p>
@@ -102,7 +119,7 @@
 
 					<h3>CLI</h3>
 					<p>
-						Adding it by entering <code>git branch feature1 develop</code> into the CLI, and then switching to it with <code>git checkout feature1</code>. Switching to the master branch and listing changes with <code>git status</code> reveals that the master branch has no registered changes – all in good order!
+						Add it by entering <code>git branch feature1 develop</code> into the CLI, and then switching to it with <code>git checkout feature1</code>. Switching to the master branch and listing changes with <code>git status</code> reveals that the master branch has no registered changes – all in good order!
 					</p>
 
 					<h3>GitHub</h3>
@@ -113,6 +130,42 @@
 					<h3>Bitbucket</h3>
 					<p>
 						asdf
+					</p>
+
+					<h3>Visual Studio 2015</h3>
+					<p>
+						In the Team Explorer's "Branches" view, right-click on the branch you want to branch out from, for example, "master". Click "New Local Branch From..." and enter the name of the new branch in the next screen. You can now switch between the branches by double-clicking on the one you wish to work on.
+					</p>
+				</section>
+
+				<section>
+					<h2><span class="number">2?</span> Add a new hotfix branch</h2>
+					<p>
+						Oftentimes, you will have to create a hotfix which may come as an abrupt surprise to your workday. Fear not! By creating a hotfix branch, we will attempt to quickly fix whatever is broken and base it entirely on stable master branch code.
+					</p>
+
+					<p>
+						Switch to the development branch by running <code>git checkout develop</code>. You should now be on that specific branch, meaning all edits will be done only to that branch.
+					</p>
+
+					<h3>CLI</h3>
+					<p>
+						Add it by entering <code>git branch feature1 develop</code> into the CLI, and then switching to it with <code>git checkout feature1</code>. Switching to the master branch and listing changes with <code>git status</code> reveals that the master branch has no registered changes – all in good order!
+					</p>
+
+					<h3>GitHub</h3>
+					<p>
+						asdf
+					</p>
+
+					<h3>Bitbucket</h3>
+					<p>
+						asdf
+					</p>
+
+					<h3>Visual Studio 2015</h3>
+					<p>
+						In the Team Explorer's "Branches" view, right-click on the branch you want to branch out from, for example, "master". Click "New Local Branch From..." and enter the name of the new branch in the next screen. You can now switch between the branches by double-clicking on the one you wish to work on.
 					</p>
 				</section>
 
@@ -131,6 +184,21 @@
 					<h3>Bitbucket</h3>
 					<p>
 						In Bitbucket there is a choice to "Close branch" after the pull request is merged. Click "Create pull request".
+					</p>
+
+					<h3>Visual Studio 2015</h3>
+					<p>
+						<a href="https://www.visualstudio.com/en-us/docs/git/tutorial/pullrequest">More about pull requests</a> for VS2015, or <a href="https://www.visualstudio.com/en-us/docs/git/pull-requests">read this</a> for some overview.
+					</p>
+
+					<p>
+						Creating a pull request in VS2015 requires that you are <a href="https://www.visualstudio.com/en-us/docs/setup-admin/team-services/connect-to-visual-studio-team-services#vs">connected to Team Services</a>. When you have pushed a commit, you will see an update panel in the "Code" section of the TFS/VS web site - click on "Create a pull request".
+					</p>
+
+					<img src="img/tfs_pullrequest.png">
+
+					<p>
+						Make your comments in the view and request a pull. Approve or comment as needed in the Pull Requests view. When merging you may choose to delete the source branch. However, it doesn't seem like the local branch will be deleted.
 					</p>
 
 					<aside>
@@ -162,9 +230,13 @@
 						asdf
 					</p>
 
-					<h3>NOTE!</h3>
 					<p>
-						In Bitbucket there is a choice to "Close source branch" in the "Merge pull request" panel. This eliminates the below step of erasing the remote (Bitbucket) repository.
+						<b>NOTE</b>: In Bitbucket there is a choice to "Close source branch" in the "Merge pull request" panel. This eliminates the below step of erasing the remote (Bitbucket) repository.
+					</p>
+
+					<h3>Visual Studio 2015</h3>
+					<p>
+						In the Team Explorer's "Branches" view, right-click the develop (or master) branch and click "Merge From...". In "Merge from branch" simply choose which feature branch you want integrated into the develop (or master) branch. Finally, click "Merge" and make sure to Sync the merge.
 					</p>
 				</section>
 
@@ -185,6 +257,11 @@
 					</p>
 
 					<h3>Bitbucket</h3>
+					<p>
+						asdf
+					</p>
+
+					<h3>Visual Studio 2015</h3>
 					<p>
 						asdf
 					</p>
@@ -209,6 +286,11 @@
 					<h3>Bitbucket</h3>
 					<p>
 						In Bitbucket a branch (sorted by "active" or "merged") can be deleted by going to "Branches" under the "Navigation" panel. To the far right a "..." symbol can be clicked. If you have merged your changes, make sure to get rid of old branches. To do so, click "Delete branch" in the "..." panel.
+					</p>
+
+					<h3>Visual Studio 2015</h3>
+					<p>
+						asdf
 					</p>
 				</section>
 			</article>
