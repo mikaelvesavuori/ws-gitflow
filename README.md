@@ -11,7 +11,7 @@ This way it will be really easy for you to see the changes you've made, since re
 - **develop**: This is the primary branch in which we will develop and deploy our code
 - **feature**: Add small heading for chapter and separate paragraphs with line break
 - **hotfix**: Correct name and correct creature type
-- **release**: Final version with styling changes and correct name
+- **release**: Final version with both the styling changes and the correct name
 
 ## Workshop instructions
 The workshop material is contained in index.html – just follow along with the instructions there. Again, make all your changes in readme.md (this document!).
@@ -20,7 +20,8 @@ The workshop material is contained in index.html – just follow along with the 
 Clone this repository to your computer and set it up with your [CLI](https://git-scm.com/book/it/v2/Git-Basics-Getting-a-Git-Repository), [Bitbucket](https://confluence.atlassian.com/bitbucket/clone-a-repository-223217891.html), [Github](https://help.github.com/articles/cloning-a-repository/) or [Visual Studio 2015 (or later) with a Team Services account](https://www.visualstudio.com/en-us/docs/git/gitquickstart).
 
 ---
-# Your text work area
+# Your work area
+Make sure to keep all you edits in separate blocks so you can see what and when things get updated.
 
 ## Initial text
 I
