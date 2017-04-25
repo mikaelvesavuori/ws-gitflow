@@ -5,8 +5,6 @@ Because Git works so well with text/code and we don't want any unnecessary compl
 
 In our workshop we will correct the below text into forming the two first paragraphs from Franz Kafka's "The Metamorphosis" (published in 1915).
 
----
-
 ## How we will use branches
 - **Feature**: Add small heading for chapter and separate paragraphs with line break
 - **Hotfix**: Correct name and correct creature type
