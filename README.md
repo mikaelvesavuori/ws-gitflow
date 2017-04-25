@@ -7,9 +7,11 @@ Because Git works so well with text/code and we don't want any unnecessary compl
 This way it will be really easy for you to see the changes you've made, since readme.md is usually displayed front-and-center in a Git repository regardless of the exact GUI you are using.
 
 ## How we will use branching in this workshop
-- **Feature**: Add small heading for chapter and separate paragraphs with line break
-- **Hotfix**: Correct name and correct creature type
-- **Release**: Final version with styling changes and correct name
+- **master**: We will only have stable code in this branch
+- **develop**: This is the primary branch in which we will develop and deploy our code
+- **feature**: Add small heading for chapter and separate paragraphs with line break
+- **hotfix**: Correct name and correct creature type
+- **release**: Final version with styling changes and correct name
 
 ## Workshop instructions
 The workshop material is contained in index.html – just follow along with the instructions there. Again, make all your changes in readme.md (this document!).
