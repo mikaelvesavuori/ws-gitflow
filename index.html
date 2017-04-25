@@ -21,25 +21,25 @@
 				<section>
 					<h2>Introduction</h2>
 					<p>
-						A core concept in Git is the concept of <b>branches</b>. On a personal, small-scale or fairly uncomplicated project you might not have the need to run separate branches. The case then is usually simply to <i>push to master</i>. But what should one do when working on big projects? The GitFlow process is one way of solving this issue.
+						A core concept in Git is the concept of <b>branches</b>. On a personal, small-scale or fairly uncomplicated project you might not have the need to run separate branches. The case then is usually simply to <i>push to master</i>. But what should one do when working on big projects? The <b>GitFlow</b> process is one way of solving this issue.
 					</p>
 
 					<img src="img/meme.jpg">
 
 					<p>
-						This workshop will focus on training us in the use of the well-established GitFlow model. Successful use of the GitFlow model will allow us to keep better track of our own changes, and ultimately provide a safer workflow for the collective master branch which will henceforth only receive reviewed code. GitFlow offers some additional structure to the more general "Feature Branch Workflow", but all in all they work pretty much the same way. The main difference could be stated that, in the GitFlow process, branches are also created for releases and hotfixes (and potentially other classes of important branches) beyond just the master and develop branches.
+						This workshop will focus on training us in the use of the well-established GitFlow model. Successful use of this model will allow us to keep better track of our own changes, and ultimately provide a safer workflow for the collective master branch which will henceforth only receive reviewed code. GitFlow offers some additional structure to the more general so-called <b>feature branch workflow</b>, but all in all they work pretty much the same way. The main difference could be stated that, <u>in the GitFlow process, branches are also created for releases and hotfixes</u> (and potentially other classes of important branches) beyond just the master and develop branches.
 					</p>
 
 					<p>
-						Remember that Git is essentially just a logging system to determine where, what and in which context changes have taken place. When working on a larger project it makes sense to isolate any work you are doing from the work of others until your work is ready for review and subsequent integration into the overall, "master" copy of the project. The most common way of achieving this isolation is by working in a separate branch of the project.
+						Remember that Git is essentially just a logging system to determine where, what and in which context changes have taken place. When working on a larger project it makes sense to isolate any work you are doing from the work of others until your work is ready for review and subsequent integration into the overalls <code>master</code> branch of the project. The most common way of achieving this isolation is by working in a separate branch of the project.
 					</p>
 
 					<p>
-						Because Git tracks changes in files, rather than <i>actual</i> files, <u>you don't (usually) need multiple sets of the project files</u>. However, what you need to do is make sure you work in the correct branch, so changes don't carry over straight away into another branch, like the develop or master branch.
+						Because Git tracks <i>changes in files</i>, rather than <i>actual</i> files, <u>you don't (usually) need multiple sets of the project files</u>. However, what you need to do is <u>always make sure you work in the correct branch</u>, so changes don't carry over straight into another branch, like the <code>develop</code> or <code>master</code> branches.
 					</p>
 
 					<aside>
-						<h3>Pre-reading</h3>
+						<h3>Pre-workshop reading</h3>
 						<ul class="ul--inline">
 							<li><a href="https://www.atlassian.com/git/tutorials/using-branches" target="_blank" rel="noopener noreferrer">Atlassian: Using Branches</a></li>
 							<li><a href="https://www.atlassian.com/git/tutorials/comparing-workflows#gitflow-workflow" target="_blank" rel="noopener noreferrer">Atlassian: Comparing Workflows – Gitflow Workflow</a></li>
@@ -59,9 +59,9 @@
 					<aside>
 						<ul>
 							<li>You should have a working understanding of how Git operates</li>
-							<li>You have sufficient skills to do basic Git tasks such as add (stage), commit, merge, pull, fetch and push to a remote Git repository</li>
-							<li>You have cloned this repository to your computer and have local access to all of its files</li>
-							<li>You have set this repository up with either a <a href="https://git-scm.com/book/it/v2/Git-Basics-Getting-a-Git-Repository" target="_blank" rel="noopener noreferrer">command line interface (CLI) with Git access</a>, <a href="https://confluence.atlassian.com/bitbucket/clone-a-repository-223217891.html" target="_blank" rel="noopener noreferrer">Bitbucket</a>, <a href="https://help.github.com/articles/cloning-a-repository/" target="_blank" rel="noopener noreferrer">Github</a>, or <a href="https://www.visualstudio.com/en-us/docs/git/gitquickstart" target="_blank" rel="noopener noreferrer">Visual Studio 2015 (or later) with a Team Services account</a></li>
+							<li>You have sufficient practical skills to run basic Git tasks such as add (stage), commit, merge, pull, fetch and push to a remote Git repository</li>
+							<li>You have cloned <a href="https://github.com/mikaelvesavuori/ws-gitflow" target="_blank" rel="noopener noreferrer">this workshop's repository</a> to your computer and have local access to all of its files</li>
+							<li>You have set the repository up with either a <a href="https://git-scm.com/book/it/v2/Git-Basics-Getting-a-Git-Repository" target="_blank" rel="noopener noreferrer">command line interface (CLI) with Git access</a>, <a href="https://confluence.atlassian.com/bitbucket/clone-a-repository-223217891.html" target="_blank" rel="noopener noreferrer">Bitbucket</a>, <a href="https://help.github.com/articles/cloning-a-repository/" target="_blank" rel="noopener noreferrer">Github</a>, or <a href="https://www.visualstudio.com/en-us/docs/git/gitquickstart" target="_blank" rel="noopener noreferrer">Visual Studio 2015 (or later) with a Team Services account</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -101,10 +101,10 @@
 					<aside>
 						<ul>
 							<li><b>master</b>: This should always be a stable branch with write access only by someone who has review responsibilities</li>
-							<li><b>develop</b>: This should be the default working branch</li>
-							<li><b>feature</b>: Any additional features or individual work should be separated into their own branches (use a descriptive name, such as "animated-menu-items") so that all work is easily overviewed and isolated; these should be branched from <code>develop</code></li>
-							<li><b>hotfix</b>: Any urgent fixes that need to be stable should always be branched out from the <code>master</code></li>
-							<li><b>release</b>: All stable releases go into their own separate release versions, like 0.1 or 1.0 or 2.4.1 etc.</li>
+							<li><b>develop</b>: This should be the <u>default ("unstable") working branch</u></li>
+							<li><b>feature</b>: Any additional features or individual work should be separated into their own branches (use a descriptive name, such as "animated-menu-items") so that all work is easily overviewed and isolated; feature branches should be branched out from <code>develop</code></li>
+							<li><b>hotfix</b>: Any urgent fixes that need to be stable should always be branched out from <code>master</code></li>
+							<li><b>release</b>: All stable public releases go into their own separate release versions (for example according to <a href="http://semver.org" target="_blank" rel="noopener noreferrer">semver</a>, such as 0.1 or 1.0 or 2.4.1) essentially <u>working only as an archive after they've been publicly released</u></li>
 						</ul>
 					</aside>
 				</section>
@@ -143,39 +143,11 @@
 					</p>
 				</section>
 
-				<section>
-					<h2><span>2?</span> Add a new hotfix branch</h2>
-					<p>
-						Oftentimes, you will have to create a hotfix which may come as an abrupt surprise to your workday. Fear not! By creating a hotfix branch, we will attempt to quickly fix whatever is broken and base it entirely on stable master branch code.
-					</p>
-
-					<p>
-						Switch to the development branch by running <code>$ git checkout develop</code>. You should now be on that specific branch, meaning all edits will be done only to that branch.
-					</p>
-
-					<h3>CLI</h3>
-					<p>
-						Add it by entering <code>$ git branch feature1 develop</code> into the CLI, and then switching to it with <code>$ git checkout feature1</code>. Switching to the master branch and listing changes with <code>$ git status</code> reveals that the master branch has no registered changes – all in good order!
-					</p>
-
-					<h3>GitHub</h3>
-					<p>
-						asdf
-					</p>
-
-					<h3>Bitbucket</h3>
-					<p>
-						asdf
-					</p>
-
-					<h3>Visual Studio 2015</h3>
-					<p>
-						In the Team Explorer's "Branches" view, right-click on the branch you want to branch out from, for example, "master". Click "New Local Branch From..." and enter the name of the new branch in the next screen. You can now switch between the branches by double-clicking on the one you wish to work on.
-					</p>
-				</section>
+				<h1>Task 2</h1>
+				<h2>Pull requests and clean-up</h2>
 
 				<section>
-					<h2><span>2.</span> Create pull request</h2>
+					<h2><span>1.</span> Create pull request</h2>
 					<h3>Only available via GUI</h3>
 					<p>
 						The <i>pull request</i> is used as a way to communicate that changes have taken place and that you wish these to be reviewed and added to the main branch (develop or master). A pull request should always contain a pertinent, meaningful description.
@@ -216,7 +188,7 @@
 				</section>
 
 				<section>
-					<h2><span>3.</span> Merge a pull request</h2>
+					<h2><span>2.</span> Merge a pull request</h2>
 					<h3>Only available via GUI</h3>
 					<p>
 						The pull request is done in Bitbucket or another GUI. In Bitbucket you will find "Pull requests" on the left-hand side panel, under the "Navigation" heading.
@@ -254,7 +226,7 @@
 				</section>
 
 				<section>
-					<h2><span>4.</span> Delete local branch</h2>
+					<h2><span>3.</span> Delete local branch</h2>
 					<p>
 						asdf
 					</p>
@@ -281,7 +253,7 @@
 				</section>
 
 				<section>
-					<h2><span>5.</span> Delete remote branch</h2>
+					<h2><span>4.</span> Delete remote branch</h2>
 					<p>
 						asdf
 					</p>
@@ -307,13 +279,44 @@
 					</p>
 				</section>
 
-				<h1>Task 2</h1>
+				<h1>Task 3</h1>
 				<h2>Hotfix branch for corrections</h2>
 
 				<section>
-					<h2><span>1.</span> Description</h2>
+					<h2><span>1.</span> Add a new hotfix branch</h2>
+					<p>
+						Oftentimes, you will have to create a hotfix which may come as an abrupt surprise to your workday. Fear not! By creating a hotfix branch, we will attempt to quickly fix whatever is broken and base it entirely on stable master branch code.
+					</p>
+
+					<p>
+						Switch to the development branch by running <code>$ git checkout develop</code>. You should now be on that specific branch, meaning all edits will be done only to that branch.
+					</p>
+
+					<h3>CLI</h3>
+					<p>
+						Add it by entering <code>$ git branch feature1 develop</code> into the CLI, and then switching to it with <code>$ git checkout feature1</code>. Switching to the master branch and listing changes with <code>$ git status</code> reveals that the master branch has no registered changes – all in good order!
+					</p>
+
+					<h3>GitHub</h3>
 					<p>
 						asdf
+					</p>
+
+					<h3>Bitbucket</h3>
+					<p>
+						asdf
+					</p>
+
+					<h3>Visual Studio 2015</h3>
+					<p>
+						In the Team Explorer's "Branches" view, right-click on the branch you want to branch out from, for example, "master". Click "New Local Branch From..." and enter the name of the new branch in the next screen. You can now switch between the branches by double-clicking on the one you wish to work on.
+					</p>
+				</section>
+
+				<section>
+					<h2><span>2.</span> Description</h2>
+					<p>
+						Finally, don't push to master. Push the updates to [xxxx] and do a pull request to further familiarize yourself with the workflow. Accept and integrate into master, and then cleanup the old branch.
 					</p>
 
 					<h3>CLI</h3>
@@ -337,13 +340,13 @@
 					</p>
 				</section>
 
-				<h1>Task 3</h1>
+				<h1>Task 4</h1>
 				<h2>Release branch for final version</h2>
 
 				<section>
 					<h2><span>1.</span> Description</h2>
 					<p>
-						asdf
+						Finally, don't push to master. Push the updates to [xxxx] and do a pull request to further familiarize yourself with the workflow. Accept and integrate into master, and then cleanup the old branch.
 					</p>
 
 					<h3>CLI</h3>
