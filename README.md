@@ -6,7 +6,17 @@ Because Git works so well with text/code and we don't want any unnecessary compl
 
 This way it will be really easy for you to see the changes you've made, since readme.md is usually displayed front-and-center in a Git repository regardless of the exact GUI you are using.
 
+## What we will use
+Instructions are provided for the following common software setups. The procedure itself should be exactly the same regardless of your chosen setup.
+
+- **CLI**: A purely command-line based approach, using a remote repo on whatever service on want; note that CLI-only won't be able to do pull requests
+- **Github & CLI**: A combination of using a CLI and doing a number of tasks (such as pull requests) through the GitHub web interface
+- **Bitbucket**: Just like above, but using Bitbucket instead
+- **Visual Studio 2015**: Entirely GUI-driven procedure; note that you require a Team Services account to fully use the web interface
+
 ## How we will use branching in this workshop
+The below branches will be created and used during the course of the workshop.
+
 - **master**: We will only have stable code in this branch
 - **develop**: This is the primary branch in which we will develop and deploy our code
 - **feature**: Add small heading for chapter and separate paragraphs with line break
