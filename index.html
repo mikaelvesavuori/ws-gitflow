@@ -124,33 +124,66 @@
 					<div class="task__contents">
 						<div class="task__inner">
 							<h1><a name="task1">Task 1</a></h1>
-							<h2>Feature branch to fix styling</h2>
+							<h2>Setup a develop branch</h2>
 						</div>
 					</div>
 				</div>
 
 				<section>
-					<h2><span>1.</span> Add a new feature branch</h2>
+					<h2><span>1.</span> Add the develop branch</h2>
 					<p>
-						askdjaslk daoslikd joaisu oaisud.
+						The very first thing we want to do is make sure we have a <code>develop</code> branch available so our code doesn't mess with the code that is currently deployed on <code>master</code>.
 					</p>
 
 					<h3 class="accordion">CLI</h3>
 					<div class="accordion--content">
 						<p>
-							Only push to the "develop" branch and your own feature branch! You can list the current branches in the project with <code>$ git status</code>.
+							You can list the current branches in the project with <code>$ git branch</code>. It won't say much right now, so let's create the <code>develop</code> branch.
 						</p>
 
 						<p>
-							Switch to the development branch by running <code>$ git checkout develop</code>. You should now be on that specific branch, meaning all edits will be done only to that branch. You can see the current branch by entering <code>$ git status</code>.
+							Enter <code>$ git branch develop</code> and run <code>$ git branch</code> again. You will now see two branches and that <code>master</code> is highlighted.
 						</p>
 
 						<p>
-							Add it by entering <code>$ git branch feature1 develop</code> into the CLI, and then switching to it with <code>$ git checkout feature1</code>. Switching to the <code>master</code> branch and listing changes with <code>$ git status</code> reveals that the <code>master</code> branch has no registered changes – all in good order!
+							Try switching to the <code>develop</code> branch by entering <code>$ git checkout develop</code> and then <code>$ git branch</code>. Finally, return to the <code>master</code> so we can sync this with the remote.
 						</p>
 					</div>
 
-					<h3 class="accordion">GitHub</h3>
+					<h3 class="accordion">GitHub & CLI</h3>
+					<div class="accordion--content">
+						<p>
+							asdf
+						</p>
+					</div>
+
+					<h3 class="accordion">Bitbucket</h3>
+					<div class="accordion--content">
+						<p>
+							asdf
+						</p>
+					</div>
+
+					<h3 class="accordion">Visual Studio 2015</h3>
+					<div class="accordion--content">
+						<p>
+							In the Team Explorer's "Branches" view, right-click on the branch you want to branch out from, for example, "master". Click "New Local Branch From..." and enter the name of the new branch in the next screen. You can now switch between the branches by double-clicking on the one you wish to work on.
+						</p>
+					</div>
+				</section><section>
+					<h2><span>2.</span> Sync branches with the remote repository</h2>
+					<p>
+						The new branch is now living on our computer – nice! However we need it on our remote as well, so let's push this change.
+					</p>
+
+					<h3 class="accordion">CLI</h3>
+					<div class="accordion--content">
+						<p>
+							Make sure you are on the <code>master</code> branch, and then run <code>$ git push -u origin develop</code>. We have now pushed the new branch as well as used the <code>-u</code> flag to signal that any push/pull will now go to <code>develop</code> as a default.
+						</p>
+					</div>
+
+					<h3 class="accordion">GitHub & CLI</h3>
 					<div class="accordion--content">
 						<p>
 							asdf
@@ -176,6 +209,100 @@
 					<div class="task__contents">
 						<div class="task__inner">
 							<h1><a name="task2">Task 2</a></h1>
+							<h2>Feature branch to fix styling</h2>
+						</div>
+					</div>
+				</div>
+
+				<section>
+					<h2><span>1.</span> Add a new feature branch</h2>
+					<p>
+						We will need a feature branch derived from <code>develop</code> so we can start working on the styling.
+					</p>
+
+					<h3 class="accordion">CLI</h3>
+					<div class="accordion--content">
+						<p>
+							Switch to the development branch by running <code>$ git checkout develop</code>. You should now be on that specific branch, meaning all edits will be done only to that branch. As before, you can see your current branch by entering <code>$ git status</code> or <code>$ git branch</code>.
+						</p>
+
+						<p>
+							Add it by entering <code>$ git checkout -b facelift develop</code> into the CLI. You will automatically checkout the new <code>facelift</code> branch.
+						</p>
+
+						<p>
+							Run <code>$ git push origin facelift</code> to sync the new branch with the remote.
+						</p>
+					</div>
+
+					<h3 class="accordion">GitHub & CLI</h3>
+					<div class="accordion--content">
+						<p>
+							asdf
+						</p>
+					</div>
+
+					<h3 class="accordion">Bitbucket</h3>
+					<div class="accordion--content">
+						<p>
+							asdf
+						</p>
+					</div>
+
+					<h3 class="accordion">Visual Studio 2015</h3>
+					<div class="accordion--content">
+						<p>
+							In the Team Explorer's "Branches" view, right-click on the branch you want to branch out from, for example, "master". Click "New Local Branch From..." and enter the name of the new branch in the next screen. You can now switch between the branches by double-clicking on the one you wish to work on.
+						</p>
+					</div>
+				</section>
+
+				<section>
+					<h2><span>2.</span> Edit styles in the facelift branch</h2>
+					<p>
+						Our first real task will be to add some very simple styling to our text.
+					</p>
+
+					<div class="inform">
+						<h3>Working with readme.md</h3>
+						<p>
+							Confused? Go ahead and refer to result.md if something isn't entirely clear about how it should look.
+						</p>
+					</div>
+
+					<h3>All</h3>
+					<p>
+						Make sure you are on the <code>facelift</code> branch.
+					</p>
+
+					<p>
+						Open up readme.md in a text editor or IDE, and find the section called "Initial text". Copy the entire block of text and paste it above the previous "Initial text" block.
+					</p>
+
+					<p>
+						Replace "Initial text" with "Feature" or something similar. Add three hash characters (#) before the "I" (signalling that this is a third-level heading in the Markdown language). Make sure there is a space between the third hash and the "I". Also, insert a line break between the two paragraphs so the text doesn't look so cramped.
+					</p>
+
+					<img src="img/text_feature.png">
+
+					<p>
+						If you run <code>$ git status</code> (or whatever similar functionality you have in your GUI), you should see that some changes have been made. Push our changes to the remote's <code>facelift</code> branch. The edit will now only be seen in readme.md on the <code>facelift</code> branch and not in any of the others.
+					</p>
+
+					<!--
+					<h3 class="accordion">Visual Studio 2015</h3>
+					<div class="accordion--content">
+						<p>
+							In the Team Explorer's "Branches" view, right-click on the branch you want to branch out from, for example, "master". Click "New Local Branch From..." and enter the name of the new branch in the next screen. You can now switch between the branches by double-clicking on the one you wish to work on.
+						</p>
+					</div>
+					-->
+				</section>
+
+				<div class="task">
+					<div class="task__contents">
+						<div class="task__inner">
+							<h1><a name="task3">Task 3</a></h1>
 							<h2>Pull requests and clean-up</h2>
 						</div>
 					</div>
@@ -185,13 +312,29 @@
 					<h2><span>1.</span> Create pull request</h2>
 					<h3>Only available via GUI</h3>
 					<p>
-						The <i>pull request</i> is used as a way to communicate that changes have taken place and that you wish these to be reviewed and added to the main branch (develop or master). A pull request should always contain a pertinent, meaningful description.
+						The <b>pull request</b> is used as a way to communicate to your team that changes have taken place and that you wish these to be reviewed and integrated into the main branch (<code>develop</code> or <code>master</code>). A pull request should therefore always contain a pertinent, meaningful description so others know what you've done.
 					</p>
 
-					<h3 class="accordion">GitHub</h3>
+					<p>
+						The changes we made and pushed to our own <code>facelift</code> branch are now uploaded, but unfortunately also contained and not integrated. What a shame that our nice styling is not available for others to see! &#x2639; Let's fix this.
+					</p>
+
+					<h3 class="accordion">GitHub & CLI</h3>
 					<div class="accordion--content">
 						<p>
-							asdf
+							On the repository front page you will have an indication that a branch was updated. Click the button "xxx".
+						</p>
+
+						<img src="img/github_pullrequest1.png">
+
+						<p>
+							On the following screen...
+						</p>
+
+						<img src="img/github_pullrequest2.png">
+
+						<p>
+							Make any additional comments.
 						</p>
 					</div>
 
@@ -246,10 +389,22 @@
 						</p>
 					</div>
 
-					<h3 class="accordion">GitHub</h3>
+					<h3 class="accordion">GitHub & CLI</h3>
 					<div class="accordion--content">
 						<p>
-							asdf
+							Accept the merge.
+						</p>
+
+						<img src="img/github_pullrequest3.png">
+
+						<p>
+							It's all golden now, so let's click "Delete branch" to save time from doing this through a CLI.
+						</p>
+
+						<img src="img/github_pullrequest4.png">
+
+						<p>
+							Go to the repository front page and switch to the <code>develop</code> branch and you should now see that the <code>facelift</code> work we did is now integrated into our development code. Woop woop!
 						</p>
 					</div>
 
@@ -278,33 +433,10 @@
 						asdf
 					</p>
 
-					<h3 class="accordion">CLI</h3>
-					<div class="accordion--content">
-						<p>
-							<code>$ git branch -d [branch-name]</code>
-						</p>
-					</div>
-
-					<h3 class="accordion">GitHub</h3>
-					<div class="accordion--content">
-						<p>
-							asdf
-						</p>
-					</div>
-
-					<h3 class="accordion">Bitbucket</h3>
-					<div class="accordion--content">
-						<p>
-							asdf
-						</p>
-					</div>
-
-					<h3 class="accordion">Visual Studio 2015</h3>
-					<div class="accordion--content">
-						<p>
-							asdf
-						</p>
-					</div>
+					<h3>All</h3>
+					<p>
+						In your CLI, run <code>$ git branch -d facelift</code>.
+					</p>
 				</section>
 
 				<section>
@@ -320,11 +452,14 @@
 						</p>
 					</div>
 
-					<h3 class="accordion">GitHub</h3>
+					<h3 class="accordion">GitHub & CLI</h3>
 					<div class="accordion--content">
 						<p>
-							asdf
+							Image instructions.
 						</p>
+
+						<img src="img/github_removerepo1.png">
+						<img src="img/github_removerepo2.png">
 					</div>
 
 					<h3 class="accordion">Bitbucket</h3>
@@ -345,7 +480,7 @@
 				<div class="task">
 					<div class="task__contents">
 						<div class="task__inner">
-							<h1><a name="task3">Task 3</a></h1>
+							<h1><a name="task4">Task 4</a></h1>
 							<h2>Hotfix branch for corrections</h2>
 						</div>
 					</div>
@@ -354,24 +489,57 @@
 				<section>
 					<h2><span>1.</span> Add a new hotfix branch</h2>
 					<p>
-						Oftentimes, you will have to create a hotfix which may come as an abrupt surprise to your workday. Fear not! By creating a hotfix branch, we will attempt to quickly fix whatever is broken and base it entirely on stable master branch code.
+						Oftentimes, you will have to create a hotfix which may come as an abrupt surprise to your workday. Fear not! By creating a hotfix branch, we will attempt to quickly fix whatever is broken and base it entirely on stable <code>master</code> branch code.
 					</p>
 
 					<p>
-						Switch to the development branch by running <code>$ git checkout develop</code>. You should now be on that specific branch, meaning all edits will be done only to that branch.
+						In this case, someone made a <a href="http://knowyourmeme.com/memes/derp" target="_blank" rel="nofollow noreferrer">derp</a> and totally missed that the dude in The Metamorphosis is Czech and not Swedish. Doh! Let's change Johan Andersson to Gregor Samsa to redeem ourselves. Oh - and we need to take care of this right away so no "oh, I'll do this thing here first" or "just one more game of Candy Crush plz :(".
+					</p>
+
+					<h3>All</h3>
+					<p>
+						First, we need to create a branch. We'll call it <code>hotfix-name</code> so we give at least some semantic context for what our fix is about. This procedure is identical to what we did in <a href="#task2">Task 2</a>. This time, however, you want to derive from the <code>master</code> branch, so the CLI command would be <code>$ git checkout -b hotfix-name master</code>.
+					</p>
+
+					<p>
+						When it's been created, make sure you are on the <code>hotfix-name</code> branch.
+					</p>
+
+					<p>
+						Open up readme.md in a text editor or IDE, and copy the section we worked on last time, called "Feature". Copy the entire block of text and paste it above the previous "Feature" block. // /// // use initial text block instead?
+					</p>
+
+					<p>
+						Change the new block's heading to "Hotfix" or something similar. asdf.
+					</p>
+
+					<img src="img/text_feature.png">
+
+					<p>
+						If you run <code>$ git status</code> (or whatever similar functionality you have in your GUI), you should see that some changes have been made. Push our changes to the remote's <code>facelift</code> branch. The edit will now only be seen in readme.md on the <code>facelift</code> branch and not in any of the others.
 					</p>
 
 					<h3 class="accordion">CLI</h3>
 					<div class="accordion--content">
 						<p>
+							Switch to the development branch by running <code>$ git checkout develop</code>. You should now be on that specific branch, meaning all edits will be done only on that branch.
+						</p>
+
+						<p>
 							Add it by entering <code>$ git branch feature1 develop</code> into the CLI, and then switching to it with <code>$ git checkout feature1</code>. Switching to the master branch and listing changes with <code>$ git status</code> reveals that the master branch has no registered changes – all in good order!
 						</p>
 					</div>
 
-					<h3 class="accordion">GitHub</h3>
+					<h3 class="accordion">GitHub & CLI</h3>
 					<div class="accordion--content">
 						<p>
-							asdf
+							Note how GitHub is informed about us wishing to merge hotfix-name into master.
+						</p>
+
+						<img src="img/github_hotfix-branches.png">
+
+						<p>
+							You will see that the readme.md is updated with our hotfix section, but our styling work is still not public.
 						</p>
 					</div>
 
@@ -388,12 +556,19 @@
 							In the Team Explorer's "Branches" view, right-click on the branch you want to branch out from, for example, "master". Click "New Local Branch From..." and enter the name of the new branch in the next screen. You can now switch between the branches by double-clicking on the one you wish to work on.
 						</p>
 					</div>
+
+					<aside>
+						<h3>Additional reading</h3>
+						<ul class="ul--inline">
+							<li><b>GitSCM</b>: <a href="https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging" target="_blank" rel="noopener noreferrer">Git Branching - Basic Branching and Merging</a></li>
+						</ul>
+					</aside>
 				</section>
 
 				<section>
 					<h2><span>2.</span> Description</h2>
 					<p>
-						Finally, follow the general instructions in <a href="#task2">Task 2</a>: Don't push to <code>master</code>; instead push the updates to <code>branch</code> and do a pull request to further familiarize yourself with this workflow. Accept and integrate into <code>master</code>, and then cleanup the old branch.
+						Finally, follow the general instructions in <a href="#task3">Task 3</a>: Don't push to <code>master</code>; instead push the updates to <code>branch</code> and do a pull request to further familiarize yourself with this workflow. Accept and integrate into <code>master</code>, and then cleanup the old branch.
 					</p>
 
 					<h3 class="accordion">CLI</h3>
@@ -403,7 +578,7 @@
 						</p>
 					</div>
 
-					<h3 class="accordion">GitHub</h3>
+					<h3 class="accordion">GitHub & CLI</h3>
 					<div class="accordion--content">
 						<p>
 							asdf
@@ -428,7 +603,7 @@
 				<div class="task">
 					<div class="task__contents">
 						<div class="task__inner">
-							<h1><a name="task4">Task 4</a></h1>
+							<h1><a name="task5">Task 5</a></h1>
 							<h2>Release branch for final version</h2>
 						</div>
 					</div>
@@ -437,7 +612,7 @@
 				<section>
 					<h2><span>1.</span> Description</h2>
 					<p>
-						Finally, follow the general instructions in <a href="#task2">Task 2</a>: Don't push to <code>master</code>; instead push the updates to <code>branch</code> and do a pull request to further familiarize yourself with this workflow. Accept and integrate into <code>master</code>, and then cleanup the old branch.
+						Finally, follow the general instructions in <a href="#task3">Task 3</a>: Don't push to <code>master</code>; instead push the updates to a new branch called <code>release-1.0</code> and do a pull request to further familiarize yourself with this workflow. Accept and integrate into <code>master</code>, and then cleanup the old branch.
 					</p>
 
 					<h3 class="accordion">CLI</h3>
@@ -447,7 +622,7 @@
 						</p>
 					</div>
 
-					<h3 class="accordion">GitHub</h3>
+					<h3 class="accordion">GitHub & CLI</h3>
 					<div class="accordion--content">
 						<p>
 							asdf
