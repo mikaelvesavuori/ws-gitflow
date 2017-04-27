@@ -493,7 +493,7 @@
 					</p>
 
 					<p>
-						In this case, someone made a <a href="http://knowyourmeme.com/memes/derp" target="_blank" rel="nofollow noreferrer">derp</a> and totally missed that the dude in The Metamorphosis is Czech and not Swedish. Doh! Let's change Johan Andersson to Gregor Samsa to redeem ourselves. Oh - and we need to take care of this right away so no "oh, I'll do this thing here first" or "just one more game of Candy Crush plz :(".
+						In this case, someone made a <a href="http://knowyourmeme.com/memes/derp" target="_blank" rel="nofollow noreferrer">derp</a> and totally missed that the dude in The Metamorphosis is Czech and not Swedish. Doh! Let's change Johan Andersson to Gregor Samsa to redeem ourselves for this error. Oh - and we need to take care of this right away so no "oh, I'll do this thing here first" or "just one more game of Candy Crush plz :(".
 					</p>
 
 					<h3>All</h3>
@@ -513,7 +513,7 @@
 						Change the new block's heading to "Hotfix" or something similar. asdf.
 					</p>
 
-					<img src="img/text_feature.png">
+					<img src="img/text_hotfix.png">
 
 					<p>
 						If you run <code>$ git status</code> (or whatever similar functionality you have in your GUI), you should see that some changes have been made. Push our changes to the remote's <code>facelift</code> branch. The edit will now only be seen in readme.md on the <code>facelift</code> branch and not in any of the others.
@@ -565,6 +565,7 @@
 					</aside>
 				</section>
 
+				<!--
 				<section>
 					<h2><span>2.</span> Description</h2>
 					<p>
@@ -599,6 +600,7 @@
 						</p>
 					</div>
 				</section>
+				-->
 
 				<div class="task">
 					<div class="task__contents">
@@ -612,13 +614,29 @@
 				<section>
 					<h2><span>1.</span> Description</h2>
 					<p>
-						Finally, follow the general instructions in <a href="#task3">Task 3</a>: Don't push to <code>master</code>; instead push the updates to a new branch called <code>release-1.0</code> and do a pull request to further familiarize yourself with this workflow. Accept and integrate into <code>master</code>, and then cleanup the old branch.
+						Now for our final task. We want to create a dedicated release version containing all of the work we've done thus far. The branch, which we will call <code>release-1.0</code>, will serve as our real, foundational public version. Step one is to push <code>develop</code>, which now contains the hotfixes and the styling feature update, into <code>master</code>, forming a new stable version. Finally, the new <code>master</code> will be used as the starting point for <code>release-1.0</code>. While <code>master</code> will receive updates as long as our project lives, these specific release versions will never be updated again.
 					</p>
 
 					<h3 class="accordion">CLI</h3>
 					<div class="accordion--content">
 						<p>
+							<!--
 							<code>$ git push origin --delete [branch-name]</code>
+							<br><br>
+							Finally, follow the general instructions in <a href="#task3">Task 3</a>: Don't push to <code>master</code>; instead push the updates to a new branch called <code>release-1.0</code> and do a pull request to further familiarize yourself with this workflow. Accept and integrate into <code>master</code>, and then cleanup the old branch.
+							-->
+
+							<code>git checkout master</code>
+							<code>git merge develop</code>
+							<code>git checkout -b release-1.0 master</code>
+							<code>git push origin release-1.0</code>
+							<code>git checkout master</code>
+							<code>add/push/pull</code>
+							<code>git checkout develop</code>
+							<code>git merge master</code>
+							<code>git add .</code>
+							<code>git commit -m "Sync develop with master"</code>
+
 						</p>
 					</div>
 
