@@ -31,7 +31,7 @@
 					</p>
 
 					<p>
-						Remember that Git is essentially just a logging system to determine where, what and in which context changes have taken place. When working on a larger project it makes sense to isolate any work you are doing from the work of others until your work is ready for review and subsequent integration into the overalls <code>master</code> branch of the project. The most common way of achieving this isolation is by working in a separate branch of the project.
+						Remember that Git is essentially just a logging system to determine where, what and in which context changes have taken place. When working on a larger project it makes sense to isolate any work you are doing from the work of others until your work is ready for review and subsequent integration into the overall <code>master</code> branch of the project. The most common way of achieving this isolation is by working in a separate branch of the project.
 					</p>
 
 					<p>
@@ -64,10 +64,11 @@
 
 					<aside>
 						<ul>
-							<li>You should have a working understanding of how Git operates</li>
+							<li>You have a working understanding of how Git operates</li>
 							<li>You have sufficient practical skills to run basic Git tasks such as add (stage), commit, merge, pull, fetch and push to a remote Git repository</li>
 							<li>You have cloned <a href="https://github.com/mikaelvesavuori/ws-gitflow" target="_blank" rel="noopener noreferrer">this workshop's repository</a> to your computer and have local access to all of its files</li>
 							<li>You have set the above repository up to your own remote repository, with either a <a href="https://git-scm.com/book/it/v2/Git-Basics-Getting-a-Git-Repository" target="_blank" rel="noopener noreferrer">command line interface (CLI) with Git access</a>, <a href="https://confluence.atlassian.com/bitbucket/clone-a-repository-223217891.html" target="_blank" rel="noopener noreferrer">Bitbucket</a>, <a href="https://help.github.com/articles/cloning-a-repository/" target="_blank" rel="noopener noreferrer">Github</a>, or <a href="https://www.visualstudio.com/en-us/docs/git/tutorial/clone" target="_blank" rel="noopener noreferrer">Visual Studio 2015 (or later) with a Team Services account</a></li>
+							<li>You have repointed the origin URL to your own repository with <code>git remote set-url origin [YOUR-URL]</code></li>
 						</ul>
 					</aside>
 				</section>
@@ -91,14 +92,14 @@
 
 					<aside>
 						<ul>
-							<li><code>$ git branch [some-branch]</code>Creates a new branch with the specified name</li>
-							<li><code>$ git branch -d [some-branch]</code>Deletes the (local) branch with the specified name</li>
-							<li><code>$ git push origin --delete [some-branch]</code>Deletes the (remote) branch with the specified name</li>
-							<li><code>$ git checkout [some-branch]</code>Switches to the branch with the specified name</li>
-							<li><code>$ git checkout -b [newbranch] [oldbranch]</code><u>Creates a new branch</u> with the specified name (if it doesn't already exist) <u>from a previous branch</u> and <u>switches to the new branch</u><br>
+							<li><code class="full">$ git branch [some-branch]</code>Creates a new branch with the specified name</li>
+							<li><code class="full">$ git branch -d [some-branch]</code>Deletes the local branch with the specified name</li>
+							<li><code class="full">$ git push origin --delete [some-branch]</code>Deletes the remote branch with the specified name</li>
+							<li><code class="full">$ git checkout [some-branch]</code>Switches to the branch with the specified name</li>
+							<li><code class="full">$ git checkout -b [newbranch] [oldbranch]</code><u>Creates a new branch</u> with the specified name (if it doesn't already exist) <u>from a previous branch</u> and <u>switches to the new branch</u><br>
 								<b>Example usage</b>: <code>$ git checkout -b myfeature develop</code></li>
-							<li><code>$ git merge [mergefrom]</code>Merge the specified branch onto the current branch<br>
-								<b>Example usage</b>: <code>$ git merge develop</code>, meaning that if you are on <code>master</code>, then all the edits in <code>develop</code> will be added on top of your <code>master</code></li>
+							<li><code class="full">$ git merge [mergefrom]</code>Merge the specified branch onto the current branch<br>
+								<b>Example usage</b>: <code>$ git merge develop</code>, meaning that the <code>develop</code> branch will be added on top of your current branch</li>
 						</ul>
 					</aside>
 				</section>
@@ -113,11 +114,19 @@
 						<ul>
 							<li><b>master</b>: This should always be a stable branch with write access only by someone who has review responsibilities</li>
 							<li><b>develop</b>: This should be the <u>default ("unstable") working branch</u></li>
-							<li><b>feature</b>: Any additional features or individual work should be separated into their own branches (use a descriptive name, such as "animated-menu-items") so that all work is easily overviewed and isolated; feature branches should be branched out from <code>develop</code></li>
+							<li><b>feature</b>: Any additional features or individual work should be separated into their own branches (use a descriptive name, such as "animated-menu-items") so that all work is easily overviewed and isolated; <u>feature branches should be branched out from <code>develop</code></u></li>
 							<li><b>hotfix</b>: Any urgent fixes that need to be stable should always be branched out from <code>master</code></li>
-							<li><b>release</b>: All stable public releases go into their own separate release versions (for example according to <a href="http://semver.org" target="_blank" rel="noopener noreferrer">semver</a>, such as 0.1 or 1.0 or 2.4.1) essentially <u>working only as an archive after they've been publicly released</u></li>
+							<li><b>release</b>: All stable public releases go into their own separate release versions (for example according to <a href="http://semver.org" target="_blank" rel="noopener noreferrer">semver</a>, such as 0.1 or 1.0 or 2.4.1) essentially working <u>only as an archive</u> after they've been publicly released</li>
 						</ul>
 					</aside>
+
+					<a href="http://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="noopener noreferrer">
+						<img src="img/gitflow.png" />
+					</a>
+
+					<p class="caption">
+						Diagram by <a href="http://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="noopener noreferrer">Vincent Driessen</a>, the creator of GitFlow.
+					</p>
 				</section>
 
 				<div class="task">
@@ -150,17 +159,34 @@
 						</p>
 					</div>
 
-					<h3 class="accordion">GitHub & CLI</h3>
+					<h3 class="accordion">GitHub + CLI</h3>
 					<div class="accordion--content">
+						<div class="inform">
+							<h3>Starting with the remote branch first?</h3>
+							<p>
+								Using the GitHub web interface means that we can only directly affect the remote repository with the changes we do in the web GUI.
+							</p>
+
+							<p>
+								You can choose to follow along with the following example, which for steps 1 and 2 will be in <u>reverse-order to the intended workshop order</u>. It works just as well, but is likely a much less common pattern than creating the local branch first.
+							</p>
+						</div>
+
 						<p>
-							asdf
+							On the repo's front page you will find the branch selector. Here you will find all of the branches in the project. Click the selector button and type in a new branch name, and then hit the "Create branch" button.
+						</p>
+
+						<img src="img/github_createbranch.png">
+
+						<p>
+							We need to synchronize the branch that now only exists on the remote with our computer. Do this by running (in the CLI) <code>$ git pull</code> to retrieve the new branch, followed by <code>$ git checkout develop</code> to step into the branch and make sure it is being tracked. End by running <code>$ git checkout master</code> to return.
 						</p>
 					</div>
 
 					<h3 class="accordion">Bitbucket</h3>
 					<div class="accordion--content">
 						<p>
-							asdf
+							–
 						</p>
 					</div>
 
@@ -173,7 +199,7 @@
 				</section><section>
 					<h2><span>2.</span> Sync branches with the remote repository</h2>
 					<p>
-						The new branch is now living on our computer – nice! However we need it on our remote as well, so let's push this change.
+						Our new branch should be now living on our computer – nice! However we need it on our remote as well, so let's push this change.
 					</p>
 
 					<h3 class="accordion">CLI</h3>
@@ -183,17 +209,17 @@
 						</p>
 					</div>
 
-					<h3 class="accordion">GitHub & CLI</h3>
+					<h3 class="accordion">GitHub + CLI</h3>
 					<div class="accordion--content">
 						<p>
-							asdf
+							–
 						</p>
 					</div>
 
 					<h3 class="accordion">Bitbucket</h3>
 					<div class="accordion--content">
 						<p>
-							asdf
+							–
 						</p>
 					</div>
 
@@ -235,17 +261,17 @@
 						</p>
 					</div>
 
-					<h3 class="accordion">GitHub & CLI</h3>
+					<h3 class="accordion">GitHub + CLI</h3>
 					<div class="accordion--content">
 						<p>
-							asdf
+							–
 						</p>
 					</div>
 
 					<h3 class="accordion">Bitbucket</h3>
 					<div class="accordion--content">
 						<p>
-							asdf
+							–
 						</p>
 					</div>
 
@@ -286,7 +312,7 @@
 					<img src="img/text_feature.png">
 
 					<p>
-						If you run <code>$ git status</code> (or whatever similar functionality you have in your GUI), you should see that some changes have been made. Push our changes to the remote's <code>facelift</code> branch. The edit will now only be seen in readme.md on the <code>facelift</code> branch and not in any of the others.
+						If you run <code>$ git status</code> (or whatever similar functionality you have in your GUI), you should see that some changes have been made. Add the file, commit, and then push the changes to the remote's <code>facelift</code> branch. The edit will now only be seen in readme.md on the <code>facelift</code> branch and not in any of the others.
 					</p>
 
 					<!--
@@ -319,22 +345,22 @@
 						The changes we made and pushed to our own <code>facelift</code> branch are now uploaded, but unfortunately also contained and not integrated. What a shame that our nice styling is not available for others to see! &#x2639; Let's fix this.
 					</p>
 
-					<h3 class="accordion">GitHub & CLI</h3>
+					<h3 class="accordion">GitHub + CLI</h3>
 					<div class="accordion--content">
 						<p>
-							On the repository front page you will have an indication that a branch was updated. Click the button "xxx".
+							On the repository front page you will have an indication that a branch was updated. Click the button "Compare & pull request".
 						</p>
 
 						<img src="img/github_pullrequest1.png">
 
 						<p>
-							On the following screen...
+							On the following screen you should make all the necessary comments to inform others about what you've done with the code. You may also add reviewers, labels and other stuff here. Be sure that you are asking to merge into the correct branch, called the "Base".
 						</p>
 
 						<img src="img/github_pullrequest2.png">
 
 						<p>
-							Make any additional comments.
+							Finalize the pull request by clicking "Create pull request".
 						</p>
 					</div>
 
@@ -375,11 +401,7 @@
 					<h2><span>2.</span> Merge a pull request</h2>
 					<h3>Only available via GUI</h3>
 					<p>
-						The pull request is done in Bitbucket or another GUI. In Bitbucket you will find "Pull requests" on the left-hand side panel, under the "Navigation" heading.
-					</p>
-
-					<p>
-						Valid users can "Approve" and "Unapprove" a pull request. The actual merge takes place when the "Merge" button is clicked. Make sure that "Source" and "Destination" are correct.
+						Creating the pull request is half the work – now someone (in this case, us) needs to check and approve the request and do the actual merging of code.
 					</p>
 
 					<div class="warn">
@@ -389,16 +411,16 @@
 						</p>
 					</div>
 
-					<h3 class="accordion">GitHub & CLI</h3>
+					<h3 class="accordion">GitHub + CLI</h3>
 					<div class="accordion--content">
 						<p>
-							Accept the merge.
+							Pull requests will be visible in the "Pull requests" panel. Click it and the pull request you just created should be visible. If you click it, the next screen will give a bunch of information that was created when making the request. You will also see if it's possible to do an automatic merge. Click "Merge" to
 						</p>
 
 						<img src="img/github_pullrequest3.png">
 
 						<p>
-							It's all golden now, so let's click "Delete branch" to save time from doing this through a CLI.
+							It's all golden now, so let's click "Delete branch" to save time from doing the remote removal through a CLI.
 						</p>
 
 						<img src="img/github_pullrequest4.png">
@@ -411,7 +433,11 @@
 					<h3 class="accordion">Bitbucket</h3>
 					<div class="accordion--content">
 						<p>
-							asdf
+							The pull request is done in Bitbucket or another GUI. In Bitbucket you will find "Pull requests" on the left-hand side panel, under the "Navigation" heading.
+						</p>
+
+						<p>
+							Valid users can "Approve" and "Unapprove" a pull request. The actual merge takes place when the "Merge" button is clicked. Make sure that "Source" and "Destination" are correct.
 						</p>
 
 						<p>
@@ -430,36 +456,36 @@
 				<section>
 					<h2><span>3.</span> Delete local branch</h2>
 					<p>
-						asdf
+						We need to get rid of the local <code>facelift</code> branch as it has no more use for us.
 					</p>
 
 					<h3>All</h3>
 					<p>
-						In your CLI, run <code>$ git branch -d facelift</code>.
+						In your CLI, run <code>$ git branch -d facelift</code>. You might get a warning that the <code>facelift</code> branch is not fully merged but this shouldn't be a problem if you double-checked that the facelift feature got integrated into <code>develop</code>. Make sure the branch is removed by running <code>$ git branch</code>.
 					</p>
 				</section>
 
 				<section>
 					<h2><span>4.</span> Delete remote branch</h2>
 					<p>
-						asdf
+						Now, we need to get rid of the remote <code>facelift</code> branch as it has no more use for us. Follow the following step if you didn't remove it through the GitHub or Bitbucket interfaces.
 					</p>
 
 					<h3 class="accordion">CLI</h3>
 					<div class="accordion--content">
 						<p>
-							<code>$ git push origin --delete [branch-name]</code>
+							Run <code>$ git push origin --delete [branch-name]</code>.
 						</p>
 					</div>
 
-					<h3 class="accordion">GitHub & CLI</h3>
+					<h3 class="accordion">GitHub + CLI</h3>
 					<div class="accordion--content">
 						<p>
-							Image instructions.
+							You can remove branches in at least two ways: either through the Code screen and then Branches (which I will provide instructions for below) or through the Pull requests screen (check under closed; open the relevant merge; in the following screen click Delete branch).
 						</p>
 
-						<img src="img/github_removerepo1.png">
-						<img src="img/github_removerepo2.png">
+						<img src="img/github_removebranch1.png">
+						<img src="img/github_removebranch2.png">
 					</div>
 
 					<h3 class="accordion">Bitbucket</h3>
@@ -472,7 +498,7 @@
 					<h3 class="accordion">Visual Studio 2015</h3>
 					<div class="accordion--content">
 						<p>
-							asdf
+							–
 						</p>
 					</div>
 				</section>
@@ -493,7 +519,7 @@
 					</p>
 
 					<p>
-						In this case, someone made a <a href="http://knowyourmeme.com/memes/derp" target="_blank" rel="nofollow noreferrer">derp</a> and totally missed that the dude in The Metamorphosis is Czech and not Swedish. Doh! Let's change Johan Andersson to Gregor Samsa to redeem ourselves for this error. Oh - and we need to take care of this right away so no "oh, I'll do this thing here first" or "just one more game of Candy Crush plz :(".
+						In this case, someone made a <a href="http://knowyourmeme.com/memes/derp" target="_blank" rel="nofollow noreferrer">derp</a> and totally missed that the dude in The Metamorphosis is Czech and not Swedish. Doh! <u>Let's change Johan Andersson to Gregor Samsa</u> to redeem ourselves for this error. What's more is that <u>he shouldn't be a spider, he's a bug</u>! Oh - and we need to take care of this right away so no "oh, I'll do this thing here first" or "just one more game of Candy Crush plz :(".
 					</p>
 
 					<h3>All</h3>
@@ -506,19 +532,27 @@
 					</p>
 
 					<p>
-						Open up readme.md in a text editor or IDE, and copy the section we worked on last time, called "Feature". Copy the entire block of text and paste it above the previous "Feature" block. // /// // use initial text block instead?
+						Open up readme.md in a text editor or IDE. Because nothing new has happened to our readme.md file (and nothing's been pushed/pulled), we won't see the styling changes we made previously – they are contained only in <code>develop</code>. That's entirely OK! We just want to fix the name problem so readers will be happy as soon as possible.
 					</p>
 
 					<p>
-						Change the new block's heading to "Hotfix" or something similar. asdf.
+						Just like last time, copy the text block with the heading "Initial text" and paste it over the first one, so we have two copies. Change the new, uppermost block's heading to "Hotfix" or something similar so we can distinguish between these later.
 					</p>
 
 					<img src="img/text_hotfix.png">
+				</section>
 
+				<section>
+					<h2><span>2.</span> Push, control and clean</h2>
 					<p>
-						If you run <code>$ git status</code> (or whatever similar functionality you have in your GUI), you should see that some changes have been made. Push our changes to the remote's <code>facelift</code> branch. The edit will now only be seen in readme.md on the <code>facelift</code> branch and not in any of the others.
+						If you run <code>$ git status</code> (or whatever similar functionality you have in your GUI), you should see that some changes have been made. Add, commit and push the changes to our remote's <code>hotfix-name</code> branch. The edit will now only be seen in readme.md on the <code>hotfix-name</code> branch and not in any of the others.
 					</p>
 
+					<p>
+						Finally, we again need to make a pull request, get it accepted and merged into <code>master</code>, and then delete local and remote versions of the <code>hotfix-name</code> branch.
+					</p>
+
+					<!--
 					<h3 class="accordion">CLI</h3>
 					<div class="accordion--content">
 						<p>
@@ -530,7 +564,7 @@
 						</p>
 					</div>
 
-					<h3 class="accordion">GitHub & CLI</h3>
+					<h3 class="accordion">GitHub + CLI</h3>
 					<div class="accordion--content">
 						<p>
 							Note how GitHub is informed about us wishing to merge hotfix-name into master.
@@ -546,7 +580,7 @@
 					<h3 class="accordion">Bitbucket</h3>
 					<div class="accordion--content">
 						<p>
-							asdf
+							–
 						</p>
 					</div>
 
@@ -556,6 +590,7 @@
 							In the Team Explorer's "Branches" view, right-click on the branch you want to branch out from, for example, "master". Click "New Local Branch From..." and enter the name of the new branch in the next screen. You can now switch between the branches by double-clicking on the one you wish to work on.
 						</p>
 					</div>
+					-->
 
 					<aside>
 						<h3>Additional reading</h3>
@@ -579,24 +614,24 @@
 						</p>
 					</div>
 
-					<h3 class="accordion">GitHub & CLI</h3>
+					<h3 class="accordion">GitHub + CLI</h3>
 					<div class="accordion--content">
 						<p>
-							asdf
+							–
 						</p>
 					</div>
 
 					<h3 class="accordion">Bitbucket</h3>
 					<div class="accordion--content">
 						<p>
-							asdf
+							–
 						</p>
 					</div>
 
 					<h3 class="accordion">Visual Studio 2015</h3>
 					<div class="accordion--content">
 						<p>
-							asdf
+							–
 						</p>
 					</div>
 				</section>
@@ -626,6 +661,20 @@
 							Finally, follow the general instructions in <a href="#task3">Task 3</a>: Don't push to <code>master</code>; instead push the updates to a new branch called <code>release-1.0</code> and do a pull request to further familiarize yourself with this workflow. Accept and integrate into <code>master</code>, and then cleanup the old branch.
 							-->
 
+							You should receive a merge conflict when trying to merge <code>develop</code> into <code>master</code> because of the two different edits to readme.md. Solve the conflict by accepting both changes either with a diff checker or manually by removing the merge head.
+
+							<code>git checkout develop</code><br>
+							<code>git pull origin develop</code><br>
+							<code>git checkout master</code><br>
+							<code>git pull origin master</code><br>
+							<code>git merge develop</code><br>
+							<code>git push origin master</code><br><br>
+
+							<code>git checkout develop</code><br>
+							<code>git merge master</code><br>
+							<code>git push</code>
+
+							<!--
 							<code>git checkout master</code><br>
 							<code>git merge develop</code><br>
 							<code>git checkout -b release-1.0 master</code><br>
@@ -636,28 +685,29 @@
 							<code>git merge master</code><br>
 							<code>git add .</code><br>
 							<code>git commit -m "Sync develop with master"</code>
+							-->
 
 						</p>
 					</div>
 
-					<h3 class="accordion">GitHub & CLI</h3>
+					<h3 class="accordion">GitHub + CLI</h3>
 					<div class="accordion--content">
 						<p>
-							asdf
+							–
 						</p>
 					</div>
 
 					<h3 class="accordion">Bitbucket</h3>
 					<div class="accordion--content">
 						<p>
-							asdf
+							–
 						</p>
 					</div>
 
 					<h3 class="accordion">Visual Studio 2015</h3>
 					<div class="accordion--content">
 						<p>
-							asdf
+							–
 						</p>
 					</div>
 				</section>

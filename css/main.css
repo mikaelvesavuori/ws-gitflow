@@ -24,7 +24,6 @@ img:hover {
 }
 
 
-
 /* Layout */
 header {
 	margin-bottom: 6rem;
@@ -62,11 +61,6 @@ li {
 	margin-bottom: 1rem;
 }
 
-li > code:first-child {
-	width: 98%;
-	display: inline-block;
-}
-
 
 
 /* Components */
@@ -93,11 +87,25 @@ li > code:first-child {
 .accordion {
 	cursor: pointer;
 	transition: .1s;
+	padding: .5rem;
+	border: 1px solid #c1c1c1;
+	border-radius: 3px;
 }
 
 .accordion:hover {
-	color: #00acf0;
+	background-color: #00acf0;
+	color: #fff;
 	transition: .15s;
+}
+
+.accordion:after {
+	content: "\2193";
+	float: right;
+}
+
+.accordion.active:after {
+	content: "\2191";
+	float: right;
 }
 
 .accordion--content {
@@ -112,10 +120,26 @@ li > code:first-child {
 }
 
 .inform {
+	margin-bottom: 1rem;
 	padding: 1rem;
 	background-color: #ffd200;
 	border-radius: 3px;
 	font-style: italic;
+}
+
+.inform > h3:after, .warn > h3:after {
+	content: "!";
+
+	border-radius: 50%;
+	width: 32px;
+	height: 32px;
+	line-height: 32px;
+	color: black;
+	background-color: #fff;
+	font-size: 1.3rem;
+	font-style: normal;
+	text-align: center;
+	float: right;
 }
 
 .warn {
@@ -166,6 +190,11 @@ p {
 	margin-top: 0;
 }
 
+p.caption {
+	font-size: .7rem;
+	text-align: center;
+}
+
 p + h3, aside {
 	margin-top: 3rem;
 }
@@ -176,6 +205,11 @@ code {
 	background-color: #d6ecf7;
 	border-radius: 3px;
 	padding: .1rem .25rem;
+}
+
+code.full {
+	width: 98%;
+	display: inline-block;
 }
 
 a:hover {
@@ -221,5 +255,12 @@ u {
 
 	h2 > span {
 		line-height: 3;
+	}
+
+	.inform > h3:after, .warn > h3:after {
+		font-size: 1rem;
+		width: 24px;
+		height: 24px;
+		line-height: 24px;
 	}
 }

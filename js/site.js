@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function eventHandler(e) {
 	if (e.classList.contains("accordion")) {
+		e.classList.toggle("active");
 		e.nextElementSibling.classList.toggle("isOpen");
 	}
 }
