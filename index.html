@@ -661,8 +661,10 @@
 							Finally, follow the general instructions in <a href="#task3">Task 3</a>: Don't push to <code>master</code>; instead push the updates to a new branch called <code>release-1.0</code> and do a pull request to further familiarize yourself with this workflow. Accept and integrate into <code>master</code>, and then cleanup the old branch.
 							-->
 
-							You should receive a merge conflict when trying to merge <code>develop</code> into <code>master</code> because of the two different edits to readme.md. Solve the conflict by accepting both changes either with a diff checker or manually by removing the merge head.
+							You should receive a merge conflict when trying to merge <code>develop</code> into <code>master</code> because of the two different edits to readme.md. Solve the conflict by accepting both changes either with a diff checker or manually by removing the merge tags.
+						</p>
 
+						<p>
 							<code>git checkout develop</code><br>
 							<code>git pull origin develop</code><br>
 							<code>git checkout master</code><br>
