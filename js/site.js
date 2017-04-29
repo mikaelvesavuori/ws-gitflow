@@ -9,4 +9,8 @@ function eventHandler(e) {
 		e.classList.toggle("active");
 		e.nextElementSibling.classList.toggle("isOpen");
 	}
+
+	if (e.classList.contains("menu-btn")) {
+		e.nextElementSibling.classList.toggle("isOpen");
+	}
 }
