@@ -5,17 +5,14 @@
 }
 
 body {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-	font-size: 1.25rem;
 	color: #1e1e1e;
-	line-height: 1.45;
-	margin: 0;
-	padding: 0;
+	font-size: 1.25rem;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
 img {
-	width: calc(100% - 6rem);
 	margin: 0 3rem 1rem;
+	width: calc(100% - 6rem);
 	box-shadow: 0 0 .5rem 0 #f0f0f0;
 	transition: .15s;
 }
@@ -28,27 +25,30 @@ img:hover {
 
 /* Layout */
 header {
-	color: #fff;
-	background-color: #14d26e;
-	margin: 0;
 	position: fixed;
-	width: 100%;
-	max-width: 100vw;
-	box-sizing: border-box;
-	padding: 10px;
 	z-index: 2;
+	display: flex;
+	box-sizing: border-box;
+	margin: 0;
+	padding: .5rem 1rem;
+	max-width: 100vw;
+	width: 100%;
+	background-color: #14d26e;
+	color: #fff;
+
+	justify-content: space-between;
+	align-items: center;
 }
 
 header > h1 {
-	line-height: 2rem;
-	font-size: 2rem;
-	margin: 0;
 	float: left;
+	margin: 0;
+	font-size: 2rem;
 }
 
 header > p {
-	font-size: .8rem;
 	float: right;
+	font-size: .8rem;
 }
 
 .wrapper {
@@ -58,17 +58,17 @@ header > p {
 }
 
 section {
-	border-radius: 5px;
 	/*padding: 3rem;*/
 	margin-bottom: 3rem;
+	border-radius: 5px;
 	box-shadow: 0 0 15px 0 #e0e0e0;
 }
 
 section > *:not(img) {
-	padding-top: 0;
-	padding-left: 3rem;
-	padding-right: 3rem;
 	display: block;
+	padding-top: 0;
+	padding-right: 3rem;
+	padding-left: 3rem;
 }
 
 section > *:last-child {
@@ -80,19 +80,19 @@ section > *:first-child {
 }
 
 ul {
-	list-style: none;
 	padding-left: 0;
+	list-style: none;
 }
 
 ul:not(.ul--inline) {
-	border-top: 1px solid darkgray;
 	margin-top: 2rem;
 	padding-top: 2rem;
+	border-top: 1px solid darkgray;
 }
 
 li:before {
-	content: "– ";
 	margin-left: -1rem;
+	content: "– ";
 }
 
 li {
@@ -103,31 +103,31 @@ li {
 
 /* Components */
 .task {
-	background-color: #14d26e;
-	border-radius: 100%;
 	margin: 0 auto;
 	margin-bottom: 3rem;
 	width: 30em;
 	height: 30em;
+	border-radius: 100%;
+	background-color: #14d26e;
 }
 
 .task__contents {
 	display: flex;
-	height: 100%;
 	padding: 1rem;
+	height: 100%;
 	color: white;
-
 	text-align: center;
+
 	align-items: center;
 	justify-content: center;
 }
 
 .accordion {
-	cursor: pointer;
-	transition: .1s;
 	padding: .5rem;
 	padding-left: 3rem;
 	border-bottom: 1px solid #c1c1c1;
+	cursor: pointer;
+	transition: .1s;
 	/*border-radius: 3px;*/
 }
 
@@ -138,20 +138,20 @@ li {
 }
 
 .accordion:after {
-	content: "\2193";
 	float: right;
 	padding-right: 3rem;
+	content: "\2193";
 }
 
 .accordion.active:after {
-	content: "\2191";
 	float: right;
 	padding-right: 3rem;
+	content: "\2191";
 }
 
 .accordion--content {
-	max-height: 0;
 	overflow: hidden;
+	max-height: 0;
 	transition: .25s;
 }
 
@@ -172,24 +172,23 @@ li {
 }
 
 .inform > h3:after, .warn > h3:after {
-	content: "!";
-
-	border-radius: 50%;
+	float: right;
 	width: 32px;
 	height: 32px;
-	line-height: 32px;
-	color: black;
+	border-radius: 50%;
 	background-color: #fff;
-	font-size: 1.3rem;
-	font-style: normal;
+	color: black;
+	content: "!";
 	text-align: center;
-	float: right;
+	font-style: normal;
+	font-size: 1.3rem;
+	line-height: 32px;
 }
 
 .warn {
 	padding: 1rem 3rem;
-	color: white;
 	background-color: #d82a4e;
+	color: white;
 	font-style: italic;
 }
 
@@ -200,10 +199,10 @@ h1, h2, h3 {
 }
 
 h2 > span {
-	color: white;
-	background-color: #00acf0;
 	padding: 1.25rem;
 	border-radius: 100% 15%;
+	background-color: #00acf0;
+	color: white;
 	line-height: 2;
 }
 
@@ -221,8 +220,8 @@ h1 + h2 {
 }
 
 h2 + h3 {
-	color: #444;
 	margin-top: .5rem;
+	color: #444;
 }
 
 .inform > h3, .warn > h3 {
@@ -231,11 +230,12 @@ h2 + h3 {
 
 p {
 	margin-top: 0;
+	margin-bottom: 1.8rem;
 }
 
 p.caption {
-	font-size: .7rem;
 	text-align: center;
+	font-size: .7rem;
 }
 
 p + h3, aside {
@@ -243,16 +243,17 @@ p + h3, aside {
 }
 
 code {
-	font-family: "Inconsolata", monospace;
-	font-display: swap;
-	background-color: #d6ecf7;
-	border-radius: 3px;
 	padding: .1rem .25rem;
+	border-radius: 3px;
+	background-color: #d6ecf7;
+	font-family: "Inconsolata", monospace;
+
+	font-display: swap;
 }
 
 code.full {
-	width: 98%;
 	display: inline-block;
+	width: 98%;
 }
 
 a:hover {
@@ -271,35 +272,43 @@ h1 a:hover {
 }
 
 u {
-	text-decoration: none;
 	border-bottom: 2px dotted #00acf0;
+	text-decoration: none;
 }
 
 
 
 /* Menu */
 .menu-btn {
-	cursor: pointer;
 	float: right;
+	padding: .25rem .5rem;
+	border-radius: 3px;
+	background-color: #00acf0;
+	font-size: 1rem;
+	cursor: pointer;
+}
+
+.menu-btn:hover {
+	text-decoration: underline;
 }
 
 .menu {
-	transition: .15s;
 	position: absolute;
-	background-color: #14d26e;
 	top: -300px;
 	right: 0;
 	z-index: 1;
+	background-color: #14d26e;
+	transition: .15s;
 }
 
 .isOpen {
-	top: 52px;
+	top: 62px;
 	transition: .25s;
 }
 
 .menu > ul {
-	padding-top: .5rem;
 	margin: 0;
+	padding-top: .5rem;
 	border: 0;
 }
 
@@ -308,8 +317,8 @@ u {
 }
 
 .menu ul li {
-	color: #fff;
 	padding: 0 1rem;
+	color: #fff;
 }
 
 .menu ul li:hover {
@@ -317,8 +326,8 @@ u {
 }
 
 .menu ul li:before {
-	content: "";
 	margin: 0;
+	content: "";
 }
 
 
@@ -326,19 +335,36 @@ u {
 /* Responsive: Tablet (landscape) and down */
 @media screen and (max-width: 51.2em) {
 	header > p {
-		width: 100%;
 		float: left;
+		width: 100%;
+	}
+
+	section > *:not(img) {
+		padding-right: 1.5rem;
+		padding-left: 1.5rem;
 	}
 }
 
 /* Responsive: Tablet (portrait) and down */
 @media screen and (max-width: 38.4em) {
+	header > h1 {
+		font-size: 1rem;
+	}
+
 	body {
 		font-size: .7rem;
 	}
 
+	p {
+		margin-bottom: 1rem;
+	}
+
 	.wrapper {
 		padding: 10rem .5rem 0 .5rem;
+	}
+
+	.isOpen {
+		top: 43px;
 	}
 
 	.task {
@@ -351,9 +377,9 @@ u {
 	}
 
 	.inform > h3:after, .warn > h3:after {
-		font-size: 1rem;
 		width: 24px;
 		height: 24px;
+		font-size: 1rem;
 		line-height: 24px;
 	}
 }

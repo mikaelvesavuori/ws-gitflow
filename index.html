@@ -39,6 +39,19 @@
 						This workshop will focus on training us in the use of the well-established GitFlow model. Successful use of this model will allow us to keep better track of our own changes, and ultimately provide a safer workflow for the collective master branch which will henceforth only receive reviewed code. GitFlow offers some additional structure to the more general so-called <b>feature branch workflow</b>, but all in all they work pretty much the same way. The main difference could be stated that, <u>in the GitFlow process, branches are also used for releases and hotfixes</u> (and potentially other classes of important branches) beyond just the <code>master</code> and <code>develop</code> branches.
 					</p>
 
+					<div class="inform">
+						<h3>What you will learn</h3>
+						<p>
+							At the end of this workshop you will have gained practical skills in working with branching Git workflows by:
+							<ul class="ul--inline">
+								<li>Implementing a feature into <code>develop</code></li>
+								<li>Implementing a hotfix into <code>master</code></li>
+								<li>Synchronizing the <code>develop</code> and <code>master</code> branches</li>
+								<li>Creating a release version</li>
+							</ul>
+						</p>
+					</div>
+
 					<p>
 						Remember that Git is essentially just a logging system to determine where, what and in which context changes have taken place. When working on a larger project it makes sense to isolate any work you are doing from the work of others until your work is ready for review and subsequent integration into the overall <code>master</code> branch of the project. The most common way of achieving this isolation is by working in a separate branch of the project.
 					</p>
@@ -663,21 +676,54 @@
 				<section>
 					<h2><span>1.</span> Create your first release</h2>
 					<p>
-						Now for our final task. We want to create a dedicated release version containing all of the work we've done thus far. The branch, which we will call <code>release-1.0</code>, will serve as our real, foundational public version. Step one is to push <code>develop</code>, which now contains the hotfixes and the styling feature update, into <code>master</code>, forming a new stable version. Finally, the new <code>master</code> will be used as the starting point for <code>release-1.0</code>. While <code>master</code> will receive updates as long as our project lives, these specific release versions will never be updated again.
+						Now for our final task. We want to create a dedicated release version containing all of the work we've done thus far. The branch, which we will call <code>release-1.0</code>, will serve as our real, foundational public version.
+					</p>
+
+					<p>
+						Step one is to push <code>develop</code>, which now contains the hotfixes and the styling feature update, into <code>master</code>, forming a new stable version. Finally, the new <code>master</code> will be used as the starting point for <code>release-1.0</code>. While <code>master</code> will receive updates as long as our project lives, these specific release versions will never be updated again.
 					</p>
 
 					<h3 class="accordion">CLI</h3>
 					<div class="accordion--content">
 						<p>
-							<!--
-							<code>$ git push origin --delete [branch-name]</code>
-							<br><br>
-							Finally, follow the general instructions in <a href="#task3">Task 3</a>: Don't push to <code>master</code>; instead push the updates to a new branch called <code>release-1.0</code> and do a pull request to further familiarize yourself with this workflow. Accept and integrate into <code>master</code>, and then cleanup the old branch.
-							-->
-
-							You should receive a merge conflict when trying to merge <code>develop</code> into <code>master</code> because of the two different edits to readme.md. Solve the conflict by accepting both changes either with a diff checker or manually by removing the merge tags.
+							<code>git checkout develop</code><br>
+							<code>git pull origin develop</code><br>
+							<code>git checkout master</code><br>
+							<code>git pull origin master</code><br>
 						</p>
+					</div>
+				</section>
 
+				<section>
+					<h2><span>2.</span> Merge and handle the conflict</h2>
+
+					<p>
+						You should receive a merge conflict when trying to merge <code>develop</code> into <code>master</code> because of the two different edits to readme.md. Solve the conflict by accepting both changes either with a diff checker or manually by removing the merge tags.
+					</p>
+
+					<h3 class="accordion">CLI</h3>
+					<div class="accordion--content">
+						<p>
+							The <code>--no-ff</code> flag is used to indicate that you want to keep track of who did the merge and when. This also forces Git to not create an individual commit node for this merge.<br><br>
+
+							<code>git merge --no-ff develop</code><br>
+							<code>git push origin master</code><br>
+							<code>git checkout develop</code><br>
+							<code>git merge master</code><br>
+							<code>git push</code>
+						</p>
+					</div>
+				</section>
+
+				<section>
+					<h2><span>3.</span> Process steps</h2>
+
+					<p>
+						–
+					</p>
+
+					<h3 class="accordion">CLI</h3>
+					<div class="accordion--content">
 						<p>
 							<code>git checkout develop</code><br>
 							<code>git pull origin develop</code><br>
