@@ -26,6 +26,12 @@
 		</header>
 
 		<div class="wrapper">
+			<div class="imageviewer">
+				<div class="imageviewer--content">
+					<img src="" class="imageviewer--image">
+				</div>
+			</div>
+
 			<article>
 				<section>
 					<h2>Introduction</h2>
@@ -43,17 +49,17 @@
 						<h3>What you will learn</h3>
 						<p>
 							At the end of this workshop you will have gained practical skills in working with branching Git workflows by:
-							<ul class="ul--inline">
-								<li>Implementing a feature into <code>develop</code></li>
-								<li>Implementing a hotfix into <code>master</code></li>
-								<li>Synchronizing the <code>develop</code> and <code>master</code> branches</li>
-								<li>Creating a release version</li>
-							</ul>
 						</p>
+						<ul class="ul--inline">
+							<li>Implementing a feature into <code>develop</code></li>
+							<li>Implementing a hotfix into <code>master</code></li>
+							<li>Synchronizing the <code>develop</code> and <code>master</code> branches</li>
+							<li>Creating a release version</li>
+						</ul>
 					</div>
 
 					<p>
-						Remember that Git is essentially just a logging system to determine where, what and in which context changes have taken place. When working on a larger project it makes sense to isolate any work you are doing from the work of others until your work is ready for review and subsequent integration into the overall <code>master</code> branch of the project. The most common way of achieving this isolation is by working in a separate branch of the project.
+						Remember that Git is really just a logging system to determine where, what and in which context changes have taken place. When working on a larger project it makes sense to isolate any work you are doing from the work of others until your work is ready for review and subsequent integration into the overall <code>master</code> branch of the project. The most common way of achieving this isolation is by working in a separate branch of the project.
 					</p>
 
 					<p>
@@ -87,10 +93,10 @@
 					<aside>
 						<ul>
 							<li>You have a working understanding of how Git operates</li>
-							<li>You have sufficient practical skills to run basic Git tasks such as add (stage), commit, merge, pull, fetch and push to a remote Git repository</li>
+							<li>You have sufficient practical skills to run basic Git tasks such as <em>add</em> (stage), <em>commit</em>, <em>merge</em>, <em>pull</em>, <em>fetch</em> and <em>push</em> to a remote Git repository</li>
 							<li>You have cloned <a href="https://github.com/mikaelvesavuori/ws-gitflow" target="_blank" rel="noopener noreferrer">this workshop's repository</a> to your computer and have local access to all of its files</li>
 							<li>You have set the above repository up to your own remote repository, with either a <a href="https://git-scm.com/book/it/v2/Git-Basics-Getting-a-Git-Repository" target="_blank" rel="noopener noreferrer">command line interface (CLI) with Git access</a>, <a href="https://confluence.atlassian.com/bitbucket/clone-a-repository-223217891.html" target="_blank" rel="noopener noreferrer">Bitbucket</a>, <a href="https://help.github.com/articles/cloning-a-repository/" target="_blank" rel="noopener noreferrer">Github</a>, or <a href="https://www.visualstudio.com/en-us/docs/git/tutorial/clone" target="_blank" rel="noopener noreferrer">Visual Studio 2015 (or later) with a Team Services account</a></li>
-							<li>You have repointed the origin URL to your own repository with <code>git remote set-url origin [YOUR-URL]</code></li>
+							<li>You have repointed the origin URL to your own repository with <code>$ git remote set-url origin [YOUR-URL]</code></li>
 						</ul>
 					</aside>
 				</section>
@@ -138,13 +144,11 @@
 							<li><b>develop</b>: This should be the <u>default ("unstable") working branch</u></li>
 							<li><b>feature</b>: Any additional features or individual work should be separated into their own branches (use a descriptive name, such as "animated-menu-items") so that all work is easily overviewed and isolated; <u>feature branches should be branched out from <code>develop</code></u></li>
 							<li><b>hotfix</b>: Any urgent fixes that need to be stable should always be branched out from <code>master</code></li>
-							<li><b>release</b>: All stable public releases go into their own separate release versions (for example according to <a href="http://semver.org" target="_blank" rel="noopener noreferrer">semver</a>, such as 0.1 or 1.0 or 2.4.1) essentially working <u>only as an archive</u> after they've been publicly released</li>
+							<li><b>release</b>: All stable public releases go into their own separate release versions (for example according to <a href="http://semver.org" target="_blank" rel="noopener noreferrer">semver</a>, such as 0.1 or 1.0 or 2.4.1) essentially working <u>only as an archive</u> after they've been publicly released – during the development of a release candidate, however, it makes sense to work on this branch</li>
 						</ul>
 					</aside>
 
-					<a href="http://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="noopener noreferrer">
-						<img src="img/gitflow.png" />
-					</a>
+					<img src="img/gitflow.png" />
 
 					<p class="caption">
 						Diagram by <a href="http://nvie.com/posts/a-successful-git-branching-model/" target="_blank" rel="noopener noreferrer">Vincent Driessen</a>, the creator of GitFlow.
@@ -187,11 +191,11 @@
 						<div class="inform">
 							<h3>Starting with the remote branch first?</h3>
 							<p>
-								Using the GitHub web interface means that we can only directly affect the remote repository with the changes we do in the web GUI.
+								Using the GitHub web interface means that we can only directly affect the remote repository with the changes we do in the web GUI. You could begin with setting up a Git repository locally with the command line, but we will use the web interface as the starting point this time.
 							</p>
 
 							<p>
-								You can choose to follow along with the following example, which for steps 1 and 2 will be in <u>reverse-order to the intended workshop order</u>. It works just as well, but is likely a much less common pattern than creating the local branch first.
+								You can choose to follow along with the following example, which for steps 1 and 2 will be in <u>reverse-order to the CLI/standard order in which one might usually learn Git/Gitflow</u>. It works just as well, but is likely a much less common pattern than creating the local branch first.
 							</p>
 						</div>
 
@@ -206,23 +210,44 @@
 						</p>
 					</div>
 
-					<h3 class="accordion">Bitbucket</h3>
+					<h3 class="accordion">Bitbucket + Sourcetree</h3>
 					<div class="accordion--content">
+						<div class="inform">
+							<h3>Starting with the remote branch first?</h3>
+							<p>
+								Using the Bitbucket web interface means that we can only directly affect the remote repository with the changes we do in the web GUI. You can work either way: beginning by starting a Git repository on your computer and uploading it, or by setting it up with the Bitbucket web interface. This second path is the one that we will take here.
+							</p>
+
+							<p>
+								You can choose to follow along with the following example, which for steps 1 and 2 will be in <u>reverse-order to the CLI/standard order in which one might usually learn Git/Gitflow</u>. It works just as well, but is likely a much less common pattern than creating the local branch first.
+							</p>
+						</div>
+
 						<p>
-							–
+							On the logged-in Bitbucket front page for your repository, click the "Branches" sidebar menu link. In the Branches view, click "Create branch".
 						</p>
+
+						<img src="img/bitbucket_createbranch.png">
+
+						<p>
+							After you've created it, you can now switch between the branches on the "Source" page. Click the leftmost button (should say <code>master</code>) to open up the branch panel.
+						</p>
+
+						<img src="img/bitbucket_switchbranch.png">
 					</div>
 
 					<h3 class="accordion">Visual Studio 2015</h3>
 					<div class="accordion--content">
+						<img src="img/vs_createbranch.png">
+
 						<p>
-							In the Team Explorer's "Branches" view, right-click on the branch you want to branch out from, for example, "master". Click "New Local Branch From..." and enter the name of the new branch in the next screen. You can now switch between the branches by double-clicking on the one you wish to work on.
+							In the Team Explorer's "Branches" view, right-click on the branch you want to branch out from, for example, <code>master</code>. Click "New Local Branch From..." and enter the name of the new branch in the next screen. We need a branch called <code>develop</code>. After you've created it, you can now switch between the branches by double-clicking on the one you wish to work on.
 						</p>
 					</div>
 				</section><section>
 					<h2><span>2.</span> Sync branches with the remote repository</h2>
 					<p>
-						Our new branch should be now living on our computer – nice! However we need it on our remote as well, so let's push this change.
+						Our new branch will now need to exist both remotely and locally. Let's do this!
 					</p>
 
 					<h3 class="accordion">CLI</h3>
@@ -235,21 +260,49 @@
 					<h3 class="accordion">GitHub + CLI</h3>
 					<div class="accordion--content">
 						<p>
-							–
+							We've worked "backwards" from the intended, standard workflow. Because of that, we will need to grab the repository and get it to your local computer. We will then have synced the remote repository and your brand new, local copy.
+						</p>
+
+						<p>
+							You will need to use the CLI to grab all of the code and checkout your new branch. Start by cloning your Git repository with <code>$ git clone [repo-url]</code>. You should have the latest code, but just in case, run <code>$ git pull</code> to download the code to your computer, and then <code>$ git checkout develop</code> to switch to the <code>develop</code> branch.
 						</p>
 					</div>
 
-					<h3 class="accordion">Bitbucket</h3>
+					<h3 class="accordion">Bitbucket + Sourcetree</h3>
 					<div class="accordion--content">
 						<p>
-							–
+							We've worked "backwards" from the intended, standard workflow. Because of that, we will need to grab the repository and get it to your local computer. We will then have sync between the remote repository and your brand new, local copy.
 						</p>
+
+						<p>
+							Atlassian writes that <a href="https://confluence.atlassian.com/bitbucket/checkout-a-branch-into-a-local-repository-313466957.html" target="_blank" rel="noopener noreferrer">"when you checkout a branch, you should already have a local clone of the parent repository"</a>. They provide a single button checkout on Bitbucket's Source page where you can do this easily. This is going to result in a set of files (the repository content) being created on your computer.
+						</p>
+
+						<img src="img/sourcetree_getremotebranch1.png">
+
+						<p>
+							The <code>develop</code> branch will now be available on your local system as well.
+						</p>
+
+						<img src="img/sourcetree_getremotebranch2.png">
 					</div>
 
 					<h3 class="accordion">Visual Studio 2015</h3>
 					<div class="accordion--content">
 						<p>
-							In the Team Explorer's "Branches" view, right-click on the branch you want to branch out from, for example, "master". Click "New Local Branch From..." and enter the name of the new branch in the next screen. You can now switch between the branches by double-clicking on the one you wish to work on.
+							In the Team Explorer panel to the right, you will find the Sync button. Click it.
+						</p>
+
+						<img src="img/vs_sync1.png">
+
+						<p>
+							Depending on your hosting you will want to choose either to pusblish to Visual Studio Team Services or a regular Git service, such as Github. In this workshop we will assume that you are pushing to a standard, non-VSTS service.
+						</p>
+
+						<img src="img/vs_sync2.png">
+
+						<p>
+							Enter the complete repository URL and click "Publish Git Repo".
 						</p>
 					</div>
 				</section>
@@ -267,13 +320,13 @@
 				<section>
 					<h2><span>1.</span> Add a new feature branch</h2>
 					<p>
-						We will need a feature branch derived from <code>develop</code> so we can start working on the styling.
+						We will need a feature branch derived from <code>develop</code> so we can start working on the styling. Naming a feature branch should in most cases be easy. Try to be as precise and short as possible with the name. We will call our feature branch <code>facelift</code>, which is somewhat explanatory and a bit funny. In a production scenario you should always consider any kinds of potential confusion or misunderstandings that a name could cause.
 					</p>
 
 					<h3 class="accordion">CLI</h3>
 					<div class="accordion--content">
 						<p>
-							Switch to the development branch by running <code>$ git checkout develop</code>. You should now be on that specific branch, meaning all edits will be done only to that branch. As before, you can see your current branch by entering <code>$ git status</code> or <code>$ git branch</code>.
+							Switch to the development branch by running <code>$ git checkout develop</code>. You should now be on that specific branch, meaning all edits will be done only on that branch. As before, you can see your current branch by entering <code>$ git status</code> or <code>$ git branch</code>.
 						</p>
 
 						<p>
@@ -288,22 +341,44 @@
 					<h3 class="accordion">GitHub + CLI</h3>
 					<div class="accordion--content">
 						<p>
-							–
+							The procedure for creating the <code>feature</code> branch is identical to when you first set up the <code>develop</code> branch. The only difference is that you will want to branch from <code>develop</code> rather than from <code>master</code>. In the Github web interface you will always branch out from the currently active branch so make sure to switch to <code>develop</code> first.
+						</p>
+
+
+						<p>
+							Finally, sync this change with your local machine.
 						</p>
 					</div>
 
-					<h3 class="accordion">Bitbucket</h3>
+					<h3 class="accordion">Bitbucket + Sourcetree</h3>
 					<div class="accordion--content">
 						<p>
-							–
+							The procedure for creating the <code>feature</code> branch is identical to when you first set up the <code>develop</code> branch. The only difference is that you will want to branch from <code>develop</code> rather than from <code>master</code>.
 						</p>
+
+						<img src="img/bitbucket_createfeaturebranch.png">
+
+						<p>
+							Make sure to sync this change with your local machine.
+						</p>
+
+						<p>
+							If you'd rather begin on your local machine, you can create a branch in Sourcetree. Switch to the branch you want to branch out from, then right-click on "Branches" in the left-side panel. Choose "New Branch...". Type in the name of your new branch – in this case <code>feature</code> and finish by clicking "Create Branch". Sync the changes to the remote.
+						</p>
+
+						<img src="img/sourcetree_createfeaturebranch1.png">
+						<img src="img/sourcetree_createfeaturebranch2.png">
 					</div>
 
 					<h3 class="accordion">Visual Studio 2015</h3>
 					<div class="accordion--content">
 						<p>
-							In the Team Explorer's "Branches" view, right-click on the branch you want to branch out from, for example, "master". Click "New Local Branch From..." and enter the name of the new branch in the next screen. You can now switch between the branches by double-clicking on the one you wish to work on.
+							Just like when creating the develop branch, you will (in Team Explorer's "Branches" view) right-click on the branch you want to branch out from. In this case you will need to branch out from <code>develop</code>. Click "New Local Branch From..." and enter the name of the new branch in the next screen. Call it <code>feature</code> and switch to it by double-clicking it.
 						</p>
+
+						<img src="img/vs_createbranch.png">
+
+						<img src="img/vs_featurebranch.png">
 					</div>
 				</section>
 
@@ -343,7 +418,7 @@
 					<h3 class="accordion">Visual Studio 2015</h3>
 					<div class="accordion--content">
 						<p>
-							In the Team Explorer's "Branches" view, right-click on the branch you want to branch out from, for example, "master". Click "New Local Branch From..." and enter the name of the new branch in the next screen. You can now switch between the branches by double-clicking on the one you wish to work on.
+							–
 						</p>
 					</div>
 					-->
@@ -389,19 +464,17 @@
 						</p>
 					</div>
 
-					<h3 class="accordion">Bitbucket</h3>
+					<h3 class="accordion">Bitbucket + Sourcetree</h3>
 					<div class="accordion--content">
 						<p>
-							In Bitbucket there is a choice to "Close branch" after the pull request is merged. Click "Create pull request".
+							In Bitbucket, click the "Pull requests" link in the left-side panel. In the pull request view, click the "Create pull request" button.
 						</p>
+
+						<img src="img/bitbucket_createpullrequest.png">
 					</div>
 
 					<h3 class="accordion">Visual Studio 2015</h3>
 					<div class="accordion--content">
-						<p>
-							<a href="https://www.visualstudio.com/en-us/docs/git/tutorial/pullrequest" target="_blank" rel="noopener noreferrer">More about pull requests</a> for VS2015, or <a href="https://www.visualstudio.com/en-us/docs/git/pull-requests" target="_blank" rel="noopener noreferrer">read this</a> for some overview.
-						</p>
-
 						<p>
 							Creating a pull request in VS2015 requires that you are <a href="https://www.visualstudio.com/en-us/docs/setup-admin/team-services/connect-to-visual-studio-team-services#vs" target="_blank" rel="noopener noreferrer">connected to Team Services</a>. When you have pushed a commit, you will see an update panel in the "Code" section of the TFS/VS web site - click on "Create a pull request".
 						</p>
@@ -410,6 +483,10 @@
 
 						<p>
 							Make your comments in the view and request a pull. Approve or comment as needed in the Pull Requests view. When merging you may choose to delete the source branch. However, it doesn't seem like the local branch will be deleted.
+						</p>
+
+						<p>
+							<a href="https://www.visualstudio.com/en-us/docs/git/tutorial/pullrequest" target="_blank" rel="noopener noreferrer">More about pull requests</a> for VS2015, or <a href="https://www.visualstudio.com/en-us/docs/git/pull-requests" target="_blank" rel="noopener noreferrer">read this</a> for some overview.
 						</p>
 					</div>
 
@@ -432,20 +509,20 @@
 					<div class="warn">
 						<h3>Detached HEAD</h3>
 						<p>
-							Someday you might encounter a warning about the branch you are working on having a detached HEAD. [...]
+							You might happen across a warning about the branch you are working on having a detached HEAD. This means that your work will reside outside of any branch – avoid any work while in this state! Usually you just need to check in to another branch and that will be the end of your headache. But: If you've done a larger amount of new work that you want to keep, you should commit the work to a new branch and merge that into <b>master</b>.
 						</p>
 					</div>
 
 					<h3 class="accordion">GitHub + CLI</h3>
 					<div class="accordion--content">
 						<p>
-							Pull requests will be visible in the "Pull requests" panel. Click it and the pull request you just created should be visible. If you click it, the next screen will give a bunch of information that was created when making the request. You will also see if it's possible to do an automatic merge. Click "Merge" to
+							Pull requests will be visible in the "Pull requests" panel. Click it and the pull request you just created should be visible. If you click it, the next screen will give a bunch of information that was created when making the request. You will also see if it's possible to do an automatic merge. Click "Merge".
 						</p>
 
 						<img src="img/github_pullrequest3.png">
 
 						<p>
-							It's all golden now, so let's click "Delete branch" to save time from doing the remote removal through a CLI.
+							It's all golden now, so let's click "Delete branch" to save time from doing the remote removal through CLI.
 						</p>
 
 						<img src="img/github_pullrequest4.png">
@@ -455,15 +532,17 @@
 						</p>
 					</div>
 
-					<h3 class="accordion">Bitbucket</h3>
+					<h3 class="accordion">Bitbucket + Sourcetree</h3>
 					<div class="accordion--content">
 						<p>
-							The pull request is done in Bitbucket or another GUI. In Bitbucket you will find "Pull requests" on the left-hand side panel, under the "Navigation" heading.
+							The pull request is done in Bitbucket. You will find "Pull requests" on the left-hand side panel.
 						</p>
 
 						<p>
 							Valid users can "Approve" and "Unapprove" a pull request. The actual merge takes place when the "Merge" button is clicked. Make sure that "Source" and "Destination" are correct.
 						</p>
+
+						<img src="img/bitbucket_mergepullrequest.png">
 
 						<p>
 							<b>NOTE</b>: In Bitbucket there is a choice to "Close source branch" in the "Merge pull request" panel. This eliminates the below step of erasing the remote (Bitbucket) repository.
@@ -484,10 +563,30 @@
 						We need to get rid of the local <code>facelift</code> branch as it has no more use for us.
 					</p>
 
-					<h3>All</h3>
-					<p>
-						In your CLI, run <code>$ git branch -d facelift</code>. You might get a warning that the <code>facelift</code> branch is not fully merged but this shouldn't be a problem if you double-checked that the facelift feature got integrated into <code>develop</code>. Make sure the branch is removed by running <code>$ git branch</code>.
-					</p>
+					<h3 class="accordion">CLI and Github + CLI</h3>
+					<div class="accordion--content">
+						<p>
+							In your CLI, run <code>$ git branch -d facelift</code>. You might get a warning that the <code>facelift</code> branch is not fully merged but this shouldn't be a problem if you double-checked that the facelift feature got integrated into <code>develop</code>. Make sure the branch is removed by running <code>$ git branch</code>.
+						</p>
+					</div>
+
+					<h3 class="accordion">Bitbucket + Sourcetree</h3>
+					<div class="accordion--content">
+						<p>
+							You will need to use Sourcetree to remove your local branch. Right-click the branch you want to delete under "Branches". You cannot delete a branch which is currently active.
+						</p>
+
+						<img src="img/sourcetree_deletelocalbranch.png">
+					</div>
+
+					<h3 class="accordion">Visual Studio 2015</h3>
+					<div class="accordion--content">
+						<p>
+							Removing a remote branch works almost exactly the same way as deleting a local branch, except you will have to look under "remotes/origin" (or some similar name).
+						</p>
+
+						<img src="img/vs_deletelocalbranch.png">
+					</div>
 				</section>
 
 				<section>
@@ -513,18 +612,28 @@
 						<img src="img/github_removebranch2.png">
 					</div>
 
-					<h3 class="accordion">Bitbucket</h3>
+					<h3 class="accordion">Bitbucket + Sourcetree</h3>
 					<div class="accordion--content">
 						<p>
 							In Bitbucket a branch (sorted by "active" or "merged") can be deleted by going to "Branches" under the "Navigation" panel. To the far right a "..." symbol can be clicked. If you have merged your changes, make sure to get rid of old branches. To do so, click "Delete branch" in the "..." panel.
 						</p>
+
+						<img src="img/bitbucket_deleteremotebranch.png">
+
+						<p>
+							If you'd rather use Sourcetree you can do pretty much what you did to the local branch: under "Remotes", look for the right branch in the "origin" fold-down. Right click it and choose "Delete...".
+						</p>
+
+						<img src="img/sourcetree_deleteremotebranch.png">
 					</div>
 
 					<h3 class="accordion">Visual Studio 2015</h3>
 					<div class="accordion--content">
 						<p>
-							–
+							Removing a remote branch works almost exactly the same way as deleting a local branch, except you will have to look under "remotes/origin" (or some similar name).
 						</p>
+
+						<img src="img/vs_deleteremotebranch.png">
 					</div>
 				</section>
 
@@ -541,7 +650,7 @@
 				<section>
 					<h2><span>1.</span> Add a new hotfix branch</h2>
 					<p>
-						Oftentimes, you will have to create a hotfix which may come as an abrupt surprise to your workday. Fear not! By creating a hotfix branch, we will attempt to quickly fix whatever is broken and base it entirely on stable <code>master</code> branch code.
+						More than once you will have to create a hotfix which may come as an abrupt surprise to your workday. Fear not! By creating a hotfix branch, we will attempt to quickly fix whatever is broken and base it entirely on stable <code>master</code> branch code.
 					</p>
 
 					<p>
@@ -603,7 +712,7 @@
 						</p>
 					</div>
 
-					<h3 class="accordion">Bitbucket</h3>
+					<h3 class="accordion">Bitbucket + Sourcetree</h3>
 					<div class="accordion--content">
 						<p>
 							–
@@ -613,7 +722,7 @@
 					<h3 class="accordion">Visual Studio 2015</h3>
 					<div class="accordion--content">
 						<p>
-							In the Team Explorer's "Branches" view, right-click on the branch you want to branch out from, for example, "master". Click "New Local Branch From..." and enter the name of the new branch in the next screen. You can now switch between the branches by double-clicking on the one you wish to work on.
+							–
 						</p>
 					</div>
 					-->
@@ -647,7 +756,7 @@
 						</p>
 					</div>
 
-					<h3 class="accordion">Bitbucket</h3>
+					<h3 class="accordion">Bitbucket + Sourcetree</h3>
 					<div class="accordion--content">
 						<p>
 							–
@@ -686,10 +795,10 @@
 					<h3 class="accordion">CLI</h3>
 					<div class="accordion--content">
 						<p>
-							<code>git checkout develop</code><br>
-							<code>git pull origin develop</code><br>
-							<code>git checkout master</code><br>
-							<code>git pull origin master</code><br>
+							<code>$ git checkout develop</code><br>
+							<code>$ git pull origin develop</code><br>
+							<code>$ git checkout master</code><br>
+							<code>$ git pull origin master</code><br>
 						</p>
 					</div>
 				</section>
@@ -698,7 +807,7 @@
 					<h2><span>2.</span> Merge and handle the conflict</h2>
 
 					<p>
-						You should receive a merge conflict when trying to merge <code>develop</code> into <code>master</code> because of the two different edits to readme.md. Solve the conflict by accepting both changes either with a diff checker or manually by removing the merge tags.
+						You should receive a merge conflict when trying to merge <code>develop</code> into <code>master</code> because of the two different edits to readme.md. Solve the conflict by accepting both changes either with a diff checker or manually by removing the merge tags from the conflicting files.
 					</p>
 
 					<h3 class="accordion">CLI</h3>
@@ -706,70 +815,11 @@
 						<p>
 							The <code>--no-ff</code> flag is used to indicate that you want to keep track of who did the merge and when. This also forces Git to not create an individual commit node for this merge.<br><br>
 
-							<code>git merge --no-ff develop</code><br>
-							<code>git push origin master</code><br>
-							<code>git checkout develop</code><br>
-							<code>git merge master</code><br>
-							<code>git push</code>
-						</p>
-					</div>
-				</section>
-
-				<section>
-					<h2><span>3.</span> Process steps</h2>
-
-					<p>
-						–
-					</p>
-
-					<h3 class="accordion">CLI</h3>
-					<div class="accordion--content">
-						<p>
-							<code>git checkout develop</code><br>
-							<code>git pull origin develop</code><br>
-							<code>git checkout master</code><br>
-							<code>git pull origin master</code><br>
-							<code>git merge develop</code><br>
-							<code>git push origin master</code><br><br>
-
-							<code>git checkout develop</code><br>
-							<code>git merge master</code><br>
-							<code>git push</code>
-
-							<!--
-							<code>git checkout master</code><br>
-							<code>git merge develop</code><br>
-							<code>git checkout -b release-1.0 master</code><br>
-							<code>git push origin release-1.0</code><br>
-							<code>git checkout master</code><br>
-							<code>add/push/pull</code><br>
-							<code>git checkout develop</code><br>
-							<code>git merge master</code><br>
-							<code>git add .</code><br>
-							<code>git commit -m "Sync develop with master"</code>
-							-->
-
-						</p>
-					</div>
-
-					<h3 class="accordion">GitHub + CLI</h3>
-					<div class="accordion--content">
-						<p>
-							–
-						</p>
-					</div>
-
-					<h3 class="accordion">Bitbucket</h3>
-					<div class="accordion--content">
-						<p>
-							–
-						</p>
-					</div>
-
-					<h3 class="accordion">Visual Studio 2015</h3>
-					<div class="accordion--content">
-						<p>
-							–
+							<code>$ git merge --no-ff develop</code><br>
+							<code>$ git push origin master</code><br>
+							<code>$ git checkout develop</code><br>
+							<code>$ git merge master</code><br>
+							<code>$ git push</code>
 						</p>
 					</div>
 				</section>

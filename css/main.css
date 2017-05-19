@@ -4,6 +4,10 @@
 	color: #fff;
 }
 
+.noscroll {
+	overflow: hidden;
+}
+
 body {
 	color: #1e1e1e;
 	font-size: 1.25rem;
@@ -14,15 +18,13 @@ body {
 }
 
 img {
-	margin: 0 3rem 1rem;
 	width: calc(100% - 6rem);
-	box-shadow: 0 0 .5rem 0 #f0f0f0;
-	transition: .15s;
+	height: auto;
+	margin: 0 3rem 1rem;
 }
 
 img:hover {
-	box-shadow: 0 0 1.5rem 0 #c1c1c1;
-	transition: .25s;
+	cursor: pointer;
 }
 
 
@@ -56,8 +58,9 @@ header > p {
 
 .wrapper {
 	margin: 0 auto;
-	padding-top: 6rem;
-	max-width: 700px;
+	padding: 6rem 1rem 2rem 1rem;
+	max-width: 720px;
+	overflow: hidden;
 }
 
 section {
@@ -76,6 +79,11 @@ section > *:not(img) {
 
 section > *:last-child {
 	padding-bottom: 3rem;
+}
+
+section > img:last-child {
+	padding-bottom: 0;
+	margin-bottom: 3rem;
 }
 
 section > *:first-child {
@@ -165,6 +173,42 @@ li {
 .accordion--content.isOpen {
 	max-height: 5000px;
 	transition: max-height .35s;
+}
+
+.imageviewer {
+	opacity: 0;
+	display: flex;
+	box-sizing: border-box;
+	height: 0;
+	overflow-y: scroll;
+	z-index: 10;
+	transition: .2s opacity;
+}
+
+.imageviewer.active {
+	opacity: 1;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100%;
+	cursor: pointer;
+	background-color: rgba(0, 0, 0, 0.9);
+	transition: .3s opacity;
+}
+
+.imageviewer--content {
+	width: 100%;
+	display: flex;
+	align-self: center;
+}
+
+.imageviewer--image {
+	width: auto;
+	height: auto;
+	max-width: 80vw;
+	max-height: 80vh;
+	margin: 0 auto;
 }
 
 .inform {
