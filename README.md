@@ -10,8 +10,8 @@ This way it will be really easy for you to see the changes you've made, since re
 Instructions are provided for the following common software setups. The procedure itself should be exactly the same regardless of your chosen setup.
 
 - **CLI**: A purely command-line based approach, using a remote repo on whatever service on want; note that CLI-only won't be able to do pull requests
-- **Github & CLI**: A combination of using a CLI and doing a number of tasks (such as pull requests) through the GitHub web interface
-- **Bitbucket**: Just like above, but using Bitbucket instead
+- **Github + CLI**: A combination of using a CLI and doing a number of tasks (such as pull requests) through the GitHub web interface
+- **Bitbucket + Sourcetree**: Using Bitbucket as the Git service, and Sourcetree as a GUI
 - **Visual Studio 2015**: Entirely GUI-driven procedure; note that you require a Team Services account to fully use the web interface
 
 ## How we will use branching in this workshop
@@ -27,7 +27,7 @@ The below branches will be created and used during the course of the workshop.
 The workshop material is contained in index.html – just follow along with the instructions there. Again, make all your changes in readme.md (this document!).
 
 ## How do I get started?
-Clone this repository to your computer and set it up with your [CLI](https://git-scm.com/book/it/v2/Git-Basics-Getting-a-Git-Repository), [Bitbucket](https://confluence.atlassian.com/bitbucket/clone-a-repository-223217891.html), [Github](https://help.github.com/articles/cloning-a-repository/) or [Visual Studio 2015 (or later) with a Team Services account](https://www.visualstudio.com/en-us/docs/git/gitquickstart). Then just open index.html in a web browser and follow along!
+Clone this repository to your computer and set it up with your [CLI](https://git-scm.com/book/it/v2/Git-Basics-Getting-a-Git-Repository), [Bitbucket](https://confluence.atlassian.com/bitbucket/clone-a-repository-223217891.html) together with [Sourcetree](https://confluence.atlassian.com/get-started-with-sourcetree/clone-a-remote-repository-847359098.html), [Github](https://help.github.com/articles/cloning-a-repository/) or [Visual Studio 2015 (or later) with a Team Services account](https://www.visualstudio.com/en-us/docs/git/gitquickstart). Then just open index.html in a web browser and follow along!
 
 ---
 # Your work area
